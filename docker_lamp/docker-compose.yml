@@ -1,0 +1,29 @@
+apachephp:
+  build: apachephp
+  ports:
+   - "80:80"
+  volumes:
+   - ../../www:/var/www/html/
+  links:
+   - database
+
+phpmyadmin:
+   image: corbinu/docker-phpmyadmin
+   ports:
+    - "8080:80"
+   environment:
+    - MYSQL_USERNAME=gde-pass
+    - MYSQL_PASSWORD=password
+   links:
+    - database:mysql
+
+database:
+  image: mysql:5.5
+  ports:
+   - "3306:3306"
+  environment:
+     - MYSQL_ROOT_PASSWORD=password
+     - MYSQL_DATABASE=camagru
+     - MYSQL_USER=gde-pass
+     - MYSQL_PASSWORD=password
+     - MYSQL_ALLOW_EMPTY_PASSWORD=no
