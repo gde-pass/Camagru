@@ -1,29 +1,36 @@
-apachephp:
-  build: apachephp
-  ports:
-   - "80:80"
-  volumes:
-   - ../../www:/var/www/html/
-  links:
-   - database
+version: '3'
+services:
+    database:
+        image: mysql:5.5
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=camagru
+            - MYSQL_ALLOW_EMPTY_PASSWORD=no
 
-phpmyadmin:
-   image: corbinu/docker-phpmyadmin
-   ports:
-    - "8080:80"
-   environment:
-    - MYSQL_USERNAME=gde-pass
-    - MYSQL_PASSWORD=password
-   links:
-    - database:mysql
+    apachephp:
+        build: ./apachephp
+        ports:
+            - "80:80"
+        volumes:
+            - ../www:/var/www/html/
+        links:
+            - database:mysql
 
-database:
-  image: mysql:5.5
-  ports:
-   - "3306:3306"
-  environment:
-     - MYSQL_ROOT_PASSWORD=password
-     - MYSQL_DATABASE=camagru
-     - MYSQL_USER=gde-pass
-     - MYSQL_PASSWORD=password
-     - MYSQL_ALLOW_EMPTY_PASSWORD=no
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        environment:
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=password
+            - MYSQL_ROOT_PASSWORD=password
+            - PMA_PORT=3306
+            - PMA_USERNAME=root
+            - PMA_PASSWORD=password
+            - PMA_ARBITRARY=1
+
+        restart: always
+        links:
+            - database:mysql
