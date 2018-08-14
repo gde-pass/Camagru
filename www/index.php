@@ -1,6 +1,7 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>Test PHP</title>
+        <title>Camagru</title>
     </head>
     <body>
         <?php echo '<p>hola</p>'; ?>
