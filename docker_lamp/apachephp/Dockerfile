@@ -1,5 +1,7 @@
 FROM php:7.2.8-apache
 
+RUN echo "ServerName 172.0.0.3:80" >> /etc/apache2/apache2.conf
+
 # Install PDO MySQL driver
 # See https://github.com/docker-library/php/issues/62
 RUN docker-php-ext-install pdo pdo_mysql

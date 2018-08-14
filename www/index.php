@@ -1,5 +1,3 @@
-<?php phpinfo(); ?>
-
 <html>
     <head>
         <title>Test PHP</title>
