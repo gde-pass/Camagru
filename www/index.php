@@ -1,3 +1,5 @@
+<?php include('./config/database.php'); ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,4 +8,5 @@
     <body>
         <?php echo '<p>hola</p>'; ?>
     </body>
+
 </html>
