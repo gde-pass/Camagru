@@ -17,8 +17,8 @@ include 'database.php';
 		`login` VARCHAR(30) NOT NULL ,
 		`password` CHAR(128) NOT NULL ,
 		`email` VARCHAR(254) NOT NULL ,
-		`name` VARCHAR(255) NOT NULL ,
-		`surname` VARCHAR(255) NOT NULL ,
+		`firstname` VARCHAR(255) NOT NULL ,
+		`lastname` VARCHAR(255) NOT NULL ,
 		PRIMARY KEY (`id`), UNIQUE `UNIQUES` (`email`, `login`))
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
