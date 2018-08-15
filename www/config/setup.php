@@ -10,10 +10,19 @@ include 'database.php';
 		#Create DB
 		$sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
 		$dbh->exec($sql);
-		echo "\e[36mDatabase Camagru is ready\e[0m\n";
+		echo "\e[36mDatabase Camagru is created\e[0m\n";
 		#Create User Table
-		$sql = "CREATE TABLE `$DB_NAME`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`))";
+		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`users`
+		( `id` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT ,
+		`login` VARCHAR(30) NOT NULL ,
+		`password` CHAR(128) NOT NULL ,
+		`email` VARCHAR(254) NOT NULL ,
+		`name` VARCHAR(255) NOT NULL ,
+		`surname` VARCHAR(255) NOT NULL ,
+		PRIMARY KEY (`id`), UNIQUE `UNIQUES` (`email`, `login`))
+		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
+		echo "\e[36mUsers table is created\e[0m\n";
     }
 	catch(PDOException $e)
     {
