@@ -11,6 +11,9 @@ include 'database.php';
 		$sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
 		$dbh->exec($sql);
 		echo "\e[36mDatabase Camagru is ready\e[0m\n";
+		#Create User Table
+		$sql = "CREATE TABLE `$DB_NAME`.`users` ( `id` INT NOT NULL AUTO_INCREMENT , PRIMARY KEY (`id`))";
+		$dbh->exec($sql);
     }
 	catch(PDOException $e)
     {
