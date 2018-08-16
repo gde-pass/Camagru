@@ -46,7 +46,7 @@
 
         <div class="footer-icons">
 
-            <a href="#"><img src="./img/logo/facebook.png" alt="facebook-logo"></a>
+            <a href="https://www.facebook.com/42born2code/"><img src="./img/logo/facebook.png" alt="facebook-logo"></a>
             <a href="#"><img src="./img/logo/instagram.png" alt="instagram-logo" style="width:35px;"></a>
             <a href="#"><img src="./img/logo/linkedin.png" alt="linkedin-logo" style="width:35px;"></a>
             <a href="#"><img src="./img/logo/github.png" alt="github-logo" style="width:35px;"></a>
