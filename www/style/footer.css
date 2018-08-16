@@ -151,6 +151,7 @@
 .footer-distributed .footer-center div a img{
 	width: 25px;
 }
+
 /* If you don't want the footer to be responsive, remove these media queries */
 
 @media (max-width: 880px) {
