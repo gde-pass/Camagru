@@ -20,7 +20,7 @@
     <div class="footer-center">
 
         <div>
-            <i class="fa fa-map-marker"></i>
+            <a href="https://goo.gl/maps/NMahX3nMKtN2"><img src="./img/icon/mapmarker.png" alt="mapmarker-icon"></a>
             <p><span>96 boulevard bessière</span> Paris, France</p>
         </div>
 
@@ -47,9 +47,9 @@
         <div class="footer-icons">
 
             <a href="https://www.facebook.com/42born2code/"><img src="./img/logo/facebook.png" alt="facebook-logo"></a>
-            <a href="#"><img src="./img/logo/instagram.png" alt="instagram-logo" style="width:35px;"></a>
-            <a href="#"><img src="./img/logo/linkedin.png" alt="linkedin-logo" style="width:35px;"></a>
-            <a href="#"><img src="./img/logo/github.png" alt="github-logo" style="width:35px;"></a>
+            <a href="https://www.instagram.com/greg2pass/"><img src="./img/logo/instagram.png" alt="instagram-logo"></a>
+            <a href="https://www.linkedin.com/in/gregory-de-pass/"><img src="./img/logo/linkedin.png" alt="linkedin-logo"></a>
+            <a href="https://github.com/gde-pass"><img src="./img/logo/github.png" alt="github-logo"></a>
 
         </div>
 
