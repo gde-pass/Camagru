@@ -12,3 +12,14 @@ RUN usermod -u 1000 www-data
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
+
+
+# Disable cache for PHP
+RUN ( \
+  echo "opcache.memory_consumption=128"; \
+  echo "opcache.interned_strings_buffer=8"; \
+  echo "opcache.max_accelerated_files=20000"; \
+  echo "opcache.revalidate_freq=5"; \
+  echo "opcache.fast_shutdown=1"; \
+  echo "opcache.enable_cli=1"; \
+  ) > /usr/local/etc/php/conf.d/opcache-recommended.ini
