@@ -46,7 +46,7 @@ include('./header.php');
                 <div class="form-row">
                     <label class="form-checkbox">
                         <input type="checkbox" name="checkbox" checked>
-                        <span>I agree to the <a href="#">terms and conditions</a></span>
+                        <span>I agree to the <a href="./termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
 
@@ -56,7 +56,7 @@ include('./header.php');
 
             </div>
 
-            <a href="#" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+            <a href="./form_login.php" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
 
         </div>
 
