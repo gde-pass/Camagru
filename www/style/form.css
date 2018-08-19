@@ -187,8 +187,28 @@ html{
     text-decoration: none;
 }
 
+.termsx{
+    overflow-y: scroll;
+    height: 900px;
+    width: 50%;
+    margin: auto;
+    border: 2px solid #5383d3;
+    padding: 10px;
+}
+
 /*	Making the form responsive. Remove these media queries
     if you don't need the form to work on mobile devices. */
+
+@media (max-width: 1200px) {
+
+    .termsx{
+        overflow-y: scroll;
+        height: 900px;
+        width: 90%;
+        margin: auto;
+        border: 2px solid #5383d3;
+        padding: 10px;
+    }
 
 @media (max-width: 900px) {
 

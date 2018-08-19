@@ -9,7 +9,7 @@
             ·
             <a href="#">About</a>
             ·
-            <a href="#">Faq</a>
+            <a href="./termsandconditions.php">Terms & Conditions</a>
             ·
             <a href="#">Contact</a>
         </p>
@@ -21,7 +21,7 @@
 
         <div>
             <a href="https://goo.gl/maps/NMahX3nMKtN2"><img src="./img/icon/mapmarker.png" alt="mapmarker-icon"></a>
-            <p><span>96 boulevard bessière</span> Paris, France</p>
+            <p><span>96 Boulevard Bessière</span> Paris, France</p>
         </div>
 
         <div>
