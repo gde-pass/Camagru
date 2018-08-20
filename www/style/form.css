@@ -2,6 +2,7 @@
 
 html{
     background-color: #f3f3f3;
+    overflow-y: scroll;
 }
 
 .form-register{
@@ -28,7 +29,7 @@ html{
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     padding: 60px 80px;
     margin-bottom: 35px;
-    margin-top: 35px;
+    /* margin-top: 35px; */
 }
 
 .form-register-with-email .form-row{
@@ -107,13 +108,13 @@ html{
     text-decoration: none;
     padding: 4px 8px;
     font-weight: normal;
-    color: #5383d3;
+    color: #4e9eda;
 }
 
 .form-register-with-email:after{
     content: 'OR';
     position: absolute;
-    bottom: 330px;
+    bottom: 295px;
     right: -100px;
 
     border-radius: 50%;
@@ -189,13 +190,13 @@ html{
 }
 
 .termsx{
-    overflow-y: scroll;
     height: 900px;
     width: 50%;
     margin: auto;
     border: 2px solid #5383d3;
     padding: 10px;
     border-radius: 7px;
+    overflow-y: scroll;
 }
 
 /************************* LOGIN PART *************************/
@@ -289,14 +290,13 @@ html{
 }
 
 .form-log-in-with-email .form-create-an-account{
-    color:  #7b9d62;
-    background-color: #d6f0c3;
+    color:  #4e9eda;
 }
 
 .form-log-in-with-email:after{
     content: 'OR';
     position: absolute;
-    bottom: 260px;
+    bottom: 151px;
     right: -100px;
 
     border-radius: 50%;
@@ -378,7 +378,6 @@ html{
 @media (max-width: 1200px) {
 
     .termsx{
-        overflow-y: scroll;
         height: 900px;
         width: 90%;
         margin: auto;

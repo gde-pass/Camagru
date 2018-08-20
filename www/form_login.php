@@ -36,8 +36,11 @@ include('./header.php');
 
             </div>
 
-            <a href="#" class="form-forgotten-password">Forgotten password &middot;</a>
-            <a href="#" class="form-create-an-account">Create an account &rarr;</a>
+            <p>
+                <a href="#" class="form-forgotten-password">Forgotten password</a>
+                &middot;
+                <a href="./form_subscription.php" class="form-create-an-account">Create an account &rarr;</a>
+            </p>
 
         </div>
 
