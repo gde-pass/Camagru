@@ -31,6 +31,13 @@ include '../header.php';
 
                 <div class="form-row">
                     <label>
+                        <span>Nickname</span>
+                        <input type="text" name="firstname">
+                    </label>
+                </div>
+
+                <div class="form-row">
+                    <label>
                         <span>Email</span>
                         <input type="email" name="email">
                     </label>
@@ -44,8 +51,15 @@ include '../header.php';
                 </div>
 
                 <div class="form-row">
+                    <label>
+                        <span>Confirm your Password</span>
+                        <input type="password" name="passwordconfirm">
+                    </label>
+                </div>
+
+                <div class="form-row">
                     <label class="form-checkbox">
-                        <input type="checkbox" name="checkbox" checked>
+                        <input type="checkbox" name="checkbox" unchecked>
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
