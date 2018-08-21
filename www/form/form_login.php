@@ -1,5 +1,5 @@
 <?php
-include('./header.php');
+include '../header.php';
 ?>
 
 <div class="main-content">
@@ -39,7 +39,7 @@ include('./header.php');
             <p>
                 <a href="#" class="form-forgotten-password">Forgotten password</a>
                 &middot;
-                <a href="./form_subscription.php" class="form-create-an-account">Create an account &rarr;</a>
+                <a href="/form/form_subscription.php" class="form-create-an-account">Create an account &rarr;</a>
             </p>
 
         </div>
@@ -61,5 +61,5 @@ include('./header.php');
 </div>
 
 <?php
-include('./footer.php');
+include '../footer.php';
 ?>

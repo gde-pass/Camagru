@@ -1,5 +1,5 @@
 <?php
-include('./header.php');
+include 'header.php';
 ?>
 
 <div class="termsx">
@@ -235,5 +235,5 @@ include('./header.php');
 </div>
 
 <?php
-include('./footer.php');
+include 'footer.php';
 ?>

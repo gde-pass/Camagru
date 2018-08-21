@@ -1,11 +1,11 @@
 <?php
-include('./header.php');
+include '../header.php';
 ?>
 <div class="main-content">
 
     <!-- You only need this form and the form-register.css -->
 
-    <form class="form-register" method="post" action="#">
+    <form class="form-register" method="post" action="/script/script_subscription.php">
 
         <div class="form-register-with-email">
 
@@ -46,7 +46,7 @@ include('./header.php');
                 <div class="form-row">
                     <label class="form-checkbox">
                         <input type="checkbox" name="checkbox" checked>
-                        <span>I agree to the <a href="./termsandconditions.php">terms and conditions</a></span>
+                        <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
 
@@ -56,7 +56,7 @@ include('./header.php');
 
             </div>
 
-            <a href="./form_login.php" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
+            <a href="/form/form_login.php" class="form-log-in-with-existing">Already have an account? Login here &rarr;</a>
 
         </div>
 
@@ -78,5 +78,5 @@ include('./header.php');
 
 
 <?php
-include('./footer.php');
+include '../footer.php';
 ?>

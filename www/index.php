@@ -1,11 +1,11 @@
 <?php
-include('./header.php');
+include 'header.php';
 ?>
 
 <div class="container">
     <div class="container">
 		<header class="main-header clearfix">
-			<img class="logo" src="./img/icon/camera.svg">
+			<img class="logo" src="/img/icon/camera.svg">
 			<h1 class="name">Camagru <span>news</span></h1>
 		</header>
 		<div class="content clearfix">
@@ -63,5 +63,5 @@ include('./header.php');
 </div>
 
 <?php
-include('./footer.php');
+include 'footer.php';
 ?>
