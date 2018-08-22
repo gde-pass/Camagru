@@ -3,8 +3,6 @@ include '../header.php';
 ?>
 <div class="main-content">
 
-    <!-- You only need this form and the form-register.css -->
-
     <form class="form-register" method="post" action="/script/script_subscription.php">
 
         <div class="form-register-with-email">
@@ -18,48 +16,48 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>First Name</span>
-                        <input type="text" name="firstname">
+                        <input type="text" name="firstname" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Last Name</span>
-                        <input type="text" name="lastname">
+                        <input type="text" name="lastname" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Nickname</span>
-                        <input type="text" name="firstname">
+                        <input type="text" name="nickname" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email">
+                        <input type="email" name="email" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password">
+                        <input type="password" name="password" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Confirm your Password</span>
-                        <input type="password" name="passwordconfirm">
+                        <input type="password" name="passwordconfirm" required="required">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label class="form-checkbox">
-                        <input type="checkbox" name="checkbox" unchecked>
+                        <input type="checkbox" name="checkbox" unchecked required="required">
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
