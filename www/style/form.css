@@ -114,7 +114,7 @@ html{
 .form-register-with-email:after{
     content: 'OR';
     position: absolute;
-    bottom: 420px;
+    bottom: 353px;
     right: -100px;
 
     border-radius: 50%;

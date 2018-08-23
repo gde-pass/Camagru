@@ -50,13 +50,6 @@ include '../header.php';
                 </div>
 
                 <div class="form-row">
-                    <label>
-                        <span>Confirm your Password</span>
-                        <input type="password" name="passwordconfirm" required minlength="6" maxlength="20" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})">
-                    </label>
-                </div>
-
-                <div class="form-row">
                     <label class="form-checkbox">
                         <input type="checkbox" name="checkbox" unchecked>
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
