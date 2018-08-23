@@ -1,6 +1,7 @@
 <?php
 include '../header.php';
 ?>
+
 <div class="main-content">
 
     <form class="form-register" method="post" action="/script/script_subscription.php">
@@ -37,21 +38,21 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" required minlength="3" maxlength="254">
+                        <input type="email" name="email" required minlength="5" maxlength="254">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password">
+                        <input type="password" name="password" required minlength="6" maxlength="20" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Confirm your Password</span>
-                        <input type="password" name="passwordconfirm">
+                        <input type="password" name="passwordconfirm" required minlength="6" maxlength="20" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})">
                     </label>
                 </div>
 
