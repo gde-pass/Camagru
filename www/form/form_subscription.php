@@ -16,48 +16,48 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>First Name</span>
-                        <input type="text" name="firstname" required="required">
+                        <input type="text" name="firstname" required pattern="^[À-ÿa-zA-Z'-]+$" minlength="2" maxlength="255">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Last Name</span>
-                        <input type="text" name="lastname" required="required">
+                        <input type="text" name="lastname" required pattern="^[À-ÿa-zA-Z'-]+$" minlength="2" maxlength="255">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Nickname</span>
-                        <input type="text" name="nickname" required="required">
+                        <input type="text" name="nickname" required pattern="^[0-9a-zA-Z'-]+$" minlength="2" maxlength="30">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" required="required">
+                        <input type="email" name="email">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password" required="required">
+                        <input type="password" name="password">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Confirm your Password</span>
-                        <input type="password" name="passwordconfirm" required="required">
+                        <input type="password" name="passwordconfirm">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label class="form-checkbox">
-                        <input type="checkbox" name="checkbox" unchecked required="required">
+                        <input type="checkbox" name="checkbox" unchecked>
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
