@@ -18,7 +18,7 @@
 
     		<nav>
     			<a href="/index.php">Home</a>
-    			<a href="#" class="selected">Blog</a>
+    			<a href="#" class="selected">My Gallery</a>
     			<a href="#">Pricing</a>
     		</nav>
 
