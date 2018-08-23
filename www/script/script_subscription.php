@@ -1,8 +1,6 @@
 <?php
 
-// print_r($_POST);
-
-function server_pattern_check($firstname, $lastname, $nickname, $password,)
+function server_pattern_check($firstname, $lastname, $nickname, $password)
 {
     if (!preg_match("/^[À-ÿa-zA-Z'-]+$/",$firstname))
      {
@@ -25,4 +23,15 @@ function server_pattern_check($firstname, $lastname, $nickname, $password,)
     }
 }
 
+
+
+if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["password"], $_POST["termsandconditions"]))
+{
+    $firstname = $_POST["firstname"];
+    $lastname = $_POST["lastname"];
+    $nickname = $_POST["nickname"];
+    $password = $_POST["password"];
+
+    server_pattern_check($firstname, $lastname, $nickname, $password);
+}
 ?>

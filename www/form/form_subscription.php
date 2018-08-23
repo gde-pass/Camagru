@@ -17,14 +17,14 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>First Name</span>
-                        <input type="text" name="firstname" required pattern="^[À-ÿa-zA-Z'-]+$" minlength="2" maxlength="255">
+                        <input type="text" name="firstname" required pattern="^[À-ÿa-zA-Z' -]+$" minlength="2" maxlength="255">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Last Name</span>
-                        <input type="text" name="lastname" required pattern="^[À-ÿa-zA-Z'-]+$" minlength="2" maxlength="255">
+                        <input type="text" name="lastname" required pattern="^[À-ÿa-zA-Z' -]+$" minlength="2" maxlength="255">
                     </label>
                 </div>
 
@@ -38,7 +38,7 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" required minlength="5" maxlength="254">
+                        <input type="email" name="email" required minlength="3" maxlength="254">
                     </label>
                 </div>
 
@@ -51,7 +51,7 @@ include '../header.php';
 
                 <div class="form-row">
                     <label class="form-checkbox">
-                        <input type="checkbox" name="checkbox" unchecked>
+                        <input type="checkbox" name="termsandconditions" unchecked required>
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
