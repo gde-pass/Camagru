@@ -37,7 +37,7 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email">
+                        <input type="email" name="email" required minlength="3" maxlength="254">
                     </label>
                 </div>
 
@@ -87,7 +87,6 @@ include '../header.php';
     </form>
 
 </div>
-
 
 <?php
 include '../footer.php';
