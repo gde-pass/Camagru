@@ -14,7 +14,7 @@ include 'database.php';
 		#Create User Table
 		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`users`
 		( `id` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT ,
-		`login` VARCHAR(30) NOT NULL ,
+		`nickname` VARCHAR(30) NOT NULL ,
 		`password` CHAR(128) NOT NULL ,
 		`email` VARCHAR(254) NOT NULL ,
 		`firstname` VARCHAR(255) NOT NULL ,
