@@ -1,13 +1,14 @@
 <?php
+include 'config/database.php';
 
 function server_pattern_check($firstname, $lastname, $nickname, $password)
 {
-    if (!preg_match("/^[À-ÿa-zA-Z'-]+$/",$firstname))
+    if (!preg_match("/^[À-ÿa-zA-Z' -]+$/",$firstname))
      {
          die ("invalid first name");
      }
 
-    if (!preg_match("/^[À-ÿa-zA-Z'-]+$/",$lastname))
+    if (!preg_match("/^[À-ÿa-zA-Z' -]+$/",$lastname))
      {
          die ("invalid last name");
      }
@@ -33,5 +34,22 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["p
     $password = $_POST["password"];
 
     server_pattern_check($firstname, $lastname, $nickname, $password);
+
+    try
+    {
+        #Connection to DB camagru
+        $dbh = new PDO("mysql:host=$DB_HOST", $DB_USER, $DB_PW);
+        #set the PDO error mode to exception
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        #set the sql request for insert the new user
+        $sql = "";
+        #run the sql request
+        $dbh->exec($sql);
+    }
+    catch(PDOException $e)
+    {
+        echo $sql . "\n" . $e->getMessage();
+    }
+
 }
 ?>
