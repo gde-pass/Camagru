@@ -39,17 +39,17 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if (server_pattern_check($firstname, $lastname, $email, $nickname, $password) === TRUE);
+    if (server_pattern_check($firstname, $lastname, $nickname, $password) === TRUE);
     {
         try
         {
             #Connection to DB camagru
-            $dbh = new PDO("mysql:host=$DB_HOST", $DB_USER, $DB_PW);
+            $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
             #set the PDO error mode to exception
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             #set the sql request for insert the new user
-            $sql = "INSERT INTO `camagru`.`users`(`firstname`, `lastname`, `nickname`, `email`, `password`)
-            VALUES (`$firstname` , `$lastname` , `$nickname` , `$email`, `$password`)";
+            $sql = "INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`)
+                    VALUES (NULL, '$nickname', '$password', '$email', '$firstname', '$lastname')";
             #run the sql request
             $dbh->exec($sql);
         }
