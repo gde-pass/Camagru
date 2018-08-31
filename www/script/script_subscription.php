@@ -43,6 +43,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     {
         try
         {
+            $password = hash('whirlpool', $password);
             #Connection to DB camagru
             $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
             #set the PDO error mode to exception
@@ -52,6 +53,13 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
                     VALUES (NULL, '$nickname', '$password', '$email', '$firstname', '$lastname')";
             #run the sql request
             $dbh->exec($sql);
+
+             echo "coucou" . "\n";
+            #refresh page
+            echo
+            '<script language="JavaScript" type="text/javascript">
+                window.location.replace("mail_sended.php?email="+"'.$email.'");
+            </script>';
         }
         catch(PDOException $e)
         {
