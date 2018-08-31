@@ -2,7 +2,7 @@
 
 static function server_pattern_check($email, $password)
 {
-    if (!preg_match("??????",$email)) # FAIREUN PETTERN EMAIL AJOUTER A SUB FORM ET SIDE
+    if (!preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/",$email)) # FAIREUN PETTERN EMAIL AJOUTER A SUB FORM ET SIDE
      {
          die ("invalid email");
          return FALSE;

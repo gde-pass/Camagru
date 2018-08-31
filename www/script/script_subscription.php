@@ -1,7 +1,7 @@
 <?php
 include '../config/database.php';
 
-function server_pattern_check($firstname, $lastname, $nickname, $password)
+function server_pattern_check($firstname, $lastname, $nickname, $password, $email)
 {
     if (!preg_match("/^[À-ÿa-zA-Z' -]+$/",$firstname))
      {
@@ -27,6 +27,14 @@ function server_pattern_check($firstname, $lastname, $nickname, $password)
         return FALSE;
     }
     return TRUE;
+
+    if (!preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/",$email))
+    {
+        die ("invalid email");
+        return FALSE;
+    }
+    return TRUE;
+
 }
 
 
@@ -39,7 +47,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    if (server_pattern_check($firstname, $lastname, $nickname, $password) === TRUE);
+    if (server_pattern_check($firstname, $lastname, $nickname, $password, $email) === TRUE);
     {
         try
         {

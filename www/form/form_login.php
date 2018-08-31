@@ -19,14 +19,14 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email">
+                        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </label>
                 </div>
 
                 <div class="form-row">
                     <label>
                         <span>Password</span>
-                        <input type="password" name="password">
+                        <input type="password" name="password" pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})">
                     </label>
                 </div>
 

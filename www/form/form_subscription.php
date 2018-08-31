@@ -38,7 +38,7 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" required minlength="3" maxlength="254">
+                        <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="3" maxlength="254">
                     </label>
                 </div>
 
