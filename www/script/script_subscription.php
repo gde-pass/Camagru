@@ -51,6 +51,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     {
         try
         {
+            #Hash the password
             $password = hash('whirlpool', $password);
             #Connection to DB camagru
             $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
@@ -63,6 +64,8 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             $dbh->exec($sql);
 
              echo "coucou" . "\n";
+
+             
             #refresh page
             echo
             '<script language="JavaScript" type="text/javascript">
