@@ -1,5 +1,6 @@
 FROM php:7.2.8-apache
 
+#fix unknow ServerName warning
 RUN echo "ServerName 172.0.0.3:80" >> /etc/apache2/apache2.conf
 
 # Install PDO MySQL driver
