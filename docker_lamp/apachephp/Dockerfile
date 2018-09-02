@@ -1,5 +1,8 @@
 FROM php:7.2.8-apache
 
+#Install sendmail
+RUN apt-get update && apt-get install -y sendmail
+
 #fix unknow ServerName warning
 RUN echo "ServerName 172.0.0.3:80" >> /etc/apache2/apache2.conf
 
@@ -14,6 +17,7 @@ RUN usermod -u 1000 www-data
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
+COPY ./php.ini /usr/local/etc/php/
 
 # Disable cache for PHP
 RUN ( \
