@@ -1,7 +1,6 @@
 FROM php:7.2.8-apache
 
-#Install sendmail
-RUN apt-get update && apt-get install -y sendmail
+ENV DEBCONF_FRONTEND non-interactive
 
 #fix unknow ServerName warning
 RUN echo "ServerName 172.0.0.3:80" >> /etc/apache2/apache2.conf
