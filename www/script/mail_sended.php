@@ -4,6 +4,10 @@
 
  sleep(3);
 
+# generating random key
+
+$key = md5(microtime(TRUE)*100000);
+
 # Setting up mail.txt in /tmp
 
 $mail = 'From: Camagru <camagru@horsefucker.org>
