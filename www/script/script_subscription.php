@@ -1,6 +1,8 @@
 <?php
 include '../config/database.php';
 
+# Check patterns server side
+
 function server_pattern_check($firstname, $lastname, $nickname, $password, $email)
 {
     if (!preg_match("/^[À-ÿa-zA-Z' -]+$/",$firstname))
@@ -37,8 +39,6 @@ function server_pattern_check($firstname, $lastname, $nickname, $password, $emai
 
 }
 
-
-
 if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["email"], $_POST["password"], $_POST["termsandconditions"]))
 {
     $firstname = $_POST["firstname"];
@@ -63,13 +63,13 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             #run the sql request
             $dbh->exec($sql);
 
-             echo "coucou" . "\n";
+             echo "A confirmation email was sent to " . $email . "\n" .
+             "You will be automaticly redirected in 3 seconds ...";
 
-             
             #refresh page
             echo
             '<script language="JavaScript" type="text/javascript">
-                window.location.replace("mail_sended.php?email="+"'.$email.'");
+                window.location.replace("mail_sended.php?email="+"'.$email.'&firstname="+"'.$firstname.'&lastname="+"'.$lastname.'");
             </script>';
         }
         catch(PDOException $e)
