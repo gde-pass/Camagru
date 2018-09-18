@@ -19,6 +19,8 @@ include 'database.php';
 		`email` VARCHAR(254) NOT NULL ,
 		`firstname` VARCHAR(255) NOT NULL ,
 		`lastname` VARCHAR(255) NOT NULL ,
+		`confirm` BOOLEAN NOT NULL DEFAULT FALSE ,
+		`key` VARCHAR(32) NOT NULL ,
 		PRIMARY KEY (`id`), UNIQUE `UNIQUES` (`email`, `nickname`))
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
