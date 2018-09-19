@@ -21,7 +21,9 @@ include 'database.php';
 		`lastname` VARCHAR(255) NOT NULL ,
 		`confirm` BOOLEAN NOT NULL DEFAULT FALSE ,
 		`key` VARCHAR(32) NOT NULL ,
-		PRIMARY KEY (`id`), UNIQUE `UNIQUES` (`email`, `nickname`))
+		PRIMARY KEY (`id`),
+		UNIQUE `UEMAIL` (`email`),
+		UNIQUE `UNICKNAME` (`nickname`))
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
