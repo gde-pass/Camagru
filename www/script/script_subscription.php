@@ -73,7 +73,7 @@ To: '.$firstname.' '.$lastname.' <'.$email.'>
 Subject: Email confirmation
 
 For confirm your registration please click or copy & paste the following link into your web browser
-http://192.168.99.100/script/mail_confirmation.php?log='.urlencode($nickname).'&cle='.urlencode($key).'
+http://192.168.99.100/script/mail_confirmation.php?nickname='.urlencode($nickname).'&key='.urlencode($key).'
 
 This is an automatically generated email – please do not reply to it.
 If you have any queries regarding your order please email gde-pass@student.42.fr';
