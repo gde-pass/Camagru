@@ -47,6 +47,9 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+    # generating random key
+    $key = md5(microtime(TRUE)*100000);
+
     if (server_pattern_check($firstname, $lastname, $nickname, $password, $email) === TRUE);
     {
         try
@@ -58,19 +61,34 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             #set the PDO error mode to exception
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             #set the sql request for insert the new user
-            $sql = "INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`)
-                    VALUES (NULL, '$nickname', '$password', '$email', '$firstname', '$lastname')";
+            $sql = "INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `key`)
+                    VALUES (NULL, '$nickname', '$password', '$email', '$firstname', '$lastname', '$key')";
             #run the sql request
             $dbh->exec($sql);
 
-             echo "A confirmation email was sent to " . $email . "\n" .
-             "You will be automaticly redirected in 3 seconds ...";
+            # Setting up mail.txt in /tmp
+$mail =
+'From: Camagru <camagru@horsefucker.org>
+To: '.$firstname.' '.$lastname.' <'.$email.'>
+Subject: Email confirmation
 
-            #refresh page
-            echo
-            '<script language="JavaScript" type="text/javascript">
-                window.location.replace("mail_sended.php?email="+"'.$email.'&firstname="+"'.$firstname.'&lastname="+"'.$lastname.'");
-            </script>';
+For confirm your registration please click or copy & paste the following link into your web browser
+http://192.168.99.100/script/mail_confirmation.php?log='.urlencode($nickname).'&cle='.urlencode($key).'
+
+This is an automatically generated email – please do not reply to it.
+If you have any queries regarding your order please email gde-pass@student.42.fr';
+
+             # Send the mail and deleting tmp file
+
+             shell_exec('echo "'.$mail.'" > /tmp/mail.txt');
+             shell_exec('sh mail.sh "'.$email.'" > /tmp/log.txt 2>&1');
+             shell_exec('rm -rf /tmp/mail.txt');
+
+             # Redirection to login page
+             echo "
+                 <script language='JavaScript' type='text/javascript'>
+                     window.location.replace('../form/form_login.php');
+                 </script>";
         }
         catch(PDOException $e)
         {
