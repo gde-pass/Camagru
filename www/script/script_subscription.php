@@ -72,7 +72,7 @@ $mail =
 To: '.$firstname.' '.$lastname.' <'.$email.'>
 Subject: Email confirmation
 
-For confirm your registration please click or copy & paste the following link into your web browser
+To confirm your registration please click or copy and paste the following link into your web browser
 http://192.168.99.100/script/mail_confirmation.php?nickname='.urlencode($nickname).'&key='.urlencode($key).'
 
 This is an automatically generated email – please do not reply to it.
