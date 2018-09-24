@@ -29,3 +29,18 @@
     background-color: #FFBABA;
     background-image: url('../img/msgbox/error-icon.png');
 }
+
+@media (max-width: 880px) {
+
+    .info, .success, .warning, .error, .validation{
+        width: 430px;
+        border: 1px solid;
+        margin: auto;
+        padding:15px 10px 15px 50px;
+        background-repeat: no-repeat;
+        background-position: 10px center;
+        background-size: contain;
+        text-align: center;
+    }
+
+}
