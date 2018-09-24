@@ -1,9 +1,12 @@
 .info, .success, .warning, .error, .validation{
+    width: 850px;
     border: 1px solid;
-    margin: 10px 0px;
+    margin: auto;
     padding:15px 10px 15px 50px;
     background-repeat: no-repeat;
     background-position: 10px center;
+    background-size: contain;
+    text-align: center;
 }
 .info {
     color: #00529B;
@@ -19,6 +22,7 @@
     color: #9F6000;
     background-color: #FEEFB3;
     background-image: url('../img/msgbox/warning-icon.png');
+
 }
 .error {
     color: #D8000C;
