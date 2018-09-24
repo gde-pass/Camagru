@@ -1,10 +1,13 @@
 <?php
 include '../header.php';
+
+if (isset($_GET['mail']))
+{
+    echo '<div class="info" style="margin-bottom: 55px;">A confirmation email has been sent to you.</div>';
+}
 ?>
 
 <div class="main-content">
-
-    <!-- You only need this form and the form-login.css -->
 
     <form class="form-login" method="post" action="#">
 
