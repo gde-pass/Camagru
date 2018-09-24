@@ -7,6 +7,8 @@
     <link href="/style/gallery.css" rel="stylesheet" type="text/css">
     <link href="/style/form.css" rel="stylesheet" type="text/css">
     <link href="/style/footer.css" rel="stylesheet" type="text/css">
+    <link href="/style/msgbox.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
