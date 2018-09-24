@@ -9,7 +9,7 @@ if(isset($_GET['nickname']) && !empty($_GET['nickname']) AND isset($_GET['key'])
 }
 else
 {
-    echo "Wrong URL";
+    echo '<div class="error">Invalid approach, please use the link that has been send to your email.</div>';
 }
 
 #Connection to DB camagru
@@ -34,7 +34,7 @@ if ($nickname === $bddnickname AND $key === $bddkey)
 {
     if ($bddconfirm == 1)
     {
-        echo '<div class="statusmsg">You already have activated your account.</div>';
+        echo '<div class="warning">You already have activated your account.</div>';
     }
     elseif ($bddconfirm == 0)
     {
@@ -45,12 +45,12 @@ if ($nickname === $bddnickname AND $key === $bddkey)
                 AND `users`.`key` = '$key'";
         #execute the query
         $dbh->exec($sql);
-        echo "Email confirmed";
+         echo '<div class="success">Your account has been activated, you can now login</div>';
     }
 }
 else
 {
-    echo "No match in the bdd";
+    echo '<div class="error">Invalid approach, please use the link that has been send to your email.</div>';
 }
 include '../footer.php';
 ?>
