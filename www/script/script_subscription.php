@@ -55,30 +55,41 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             #set the PDO error mode to exception
             $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $sql = $dbh->prepare("SELECT * FROM `users` WHERE `users`.`nickname` = ? AND `users`.`email` = ?");
-            $sql->execute([$nickname, $email]);
-            $user_availability = $sql->fetch(PDO::FETCH_ASSOC);
-
-            echo "<pre>".count($user_availability)."</pre>";
-            echo "<pre>".$user_availability['nickname']."</pre>";
-            if (empty($user_availability))
+            #Check if the nickname is already taken or not
+            $sql = $dbh->prepare("SELECT * FROM `users` WHERE `users`.`nickname` = ?");
+            $sql->execute([$nickname]);
+            $nickname_availability = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($nickname_availability !== FALSE)
             {
-                echo "JJANIEC";
+                # Redirection to sub page
+                 echo "
+                     <script language='JavaScript' type='text/javascript'>
+                         window.location.replace('../form/form_subscription.php?nickname=no');
+                     </script>";
             }
-            var_dump($user_availability);
-/*            $count = $dbh->exec($sql);
-            if ($count === 0)
-            {
-                #Hash the password
-                $password = hash('whirlpool', $password);
-                #set the sql request for insert the new user
-                $sql = "INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `key`)
-                        VALUES (NULL, '$nickname', '$password', '$email', '$firstname', '$lastname', '$key')";
-                #run the sql request
-                $ret = $dbh->exec($sql);
 
-                $ret->fetchAll(PDO::FETCH_ASSOC);
-            }*/
+            #Check if the email is already taken or not
+            $sql = $dbh->prepare("SELECT * FROM `users` WHERE `users`.`email` = ?");
+            #run the sql request
+            $sql->execute([$email]);
+            $email_availability = $sql->fetch(PDO::FETCH_ASSOC);
+            if ($email_availability !== FALSE)
+            {
+                # Redirection to sub page
+                 echo "
+                     <script language='JavaScript' type='text/javascript'>
+                         window.location.replace('../form/form_subscription.php?email=no');
+                     </script>";
+            }
+            #Hash the password
+            $password = hash('whirlpool', $password);
+            #set the sql request for insert the new user
+            $sql = $dbh->prepare("INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `key`)
+                    VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+            #run the sql request
+            $sql->execute([$nickname, $password, $email, $firstname, $lastname, $key]);
+            #Debug array
+            $user_insertion = $sql->fetch(PDO::FETCH_ASSOC);
                 # Setting up mail.txt in /tmp
 //                 $mail =
 // 'From: Camagru <camagru@horsefucker.org>
