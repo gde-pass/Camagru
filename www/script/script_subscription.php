@@ -91,12 +91,7 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             # Setting up mail
             $to      = $email;
             $subject = 'Email Confirmation';
-            $message =
-            'To confirm your registration please click or copy and paste the following link into your web browser
-            http://192.168.99.100/script/mail_confirmation.php?nickname='.urlencode($nickname).'&key='.urlencode($key).'
-
-            This is an automatically generated email, please do not reply to it.
-            If you have any queries regarding your order please email gde-pass@student.42.fr';
+            $message = "To confirm your registration please click or copy and paste the following link into your web browser\r\nhttp://192.168.99.100/script/mail_confirmation.php?nickname=".urlencode($nickname)."&key=".urlencode($key)."\r\n\nThis is an automatically generated email, please do not reply to it.\r\nIf you have any queries regarding your order please email gde-pass@student.42.fr";
             $headers = array(
                 'From' => 'project.camagru.42@gmail.com',
                 'Reply-To' => 'gde-pass@student.42.fr',
