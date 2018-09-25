@@ -1,5 +1,15 @@
 version: '3'
 services:
+    apachephp:
+        build: ./apachephp
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ../www:/var/www/html/
+        links:
+            - database:mysql
+
     database:
         image: mysql:5.5
         ports:
@@ -8,15 +18,6 @@ services:
             - MYSQL_ROOT_PASSWORD=password
             - MYSQL_DATABASE=camagru
             - MYSQL_ALLOW_EMPTY_PASSWORD=no
-
-    apachephp:
-        build: ./apachephp
-        ports:
-            - "80:80"
-        volumes:
-            - ../www:/var/www/html/
-        links:
-            - database:mysql
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
@@ -30,7 +31,12 @@ services:
             - PMA_USERNAME=root
             - PMA_PASSWORD=password
             - PMA_ARBITRARY=1
-
         restart: always
         links:
             - database:mysql
+
+    # mailhog:
+    #     image: mailhog/mailhog:v1.0.0
+    #     ports:
+    #         - "1025:1025"
+    #         - "8025:8025"

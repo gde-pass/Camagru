@@ -88,38 +88,28 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
                     VALUES (NULL, ?, ?, ?, ?, ?, ?)");
             #run the sql request
             $sql->execute([$nickname, $password, $email, $firstname, $lastname, $key]);
-            #Debug array
-            $user_insertion = $sql->fetch(PDO::FETCH_ASSOC);
-                # Setting up mail.txt in /tmp
-//                 $mail =
-// 'From: Camagru <camagru@horsefucker.org>
-// To: '.$firstname.' '.$lastname.' <'.$email.'>
-// Subject: Email confirmation
-//
-// To confirm your registration please click or copy and paste the following link into your web browser
-// http://192.168.99.100/script/mail_confirmation.php?nickname='.urlencode($nickname).'&key='.urlencode($key).'
-//
-// This is an automatically generated email, please do not reply to it.
-// If you have any queries regarding your order please email gde-pass@student.42.fr';
-//
-//              # Send the mail and deleting tmp file
-//
-//              shell_exec('echo "'.$mail.'" > /tmp/mail.txt');
-//              shell_exec('sh mail.sh "'.$email.'" > /tmp/log.txt 2>&1');
-//              shell_exec('rm -rf /tmp/mail.txt');
-//
-//              # Redirection to login page
-//              echo "
-//                  <script language='JavaScript' type='text/javascript'>
-//                      window.location.replace('../form/form_login.php?email=sent');
-//                  </script>";
-//           }
-             // else
-             // {
-             //     echo "EMAIL OU NICKNAME DEJA USE";
-             // }
+            # Setting up mail
+            $to      = $email;
+            $subject = 'Email Confirmation';
+            $message =
+            'To confirm your registration please click or copy and paste the following link into your web browser
+            http://192.168.99.100/script/mail_confirmation.php?nickname='.urlencode($nickname).'&key='.urlencode($key).'
+
+            This is an automatically generated email, please do not reply to it.
+            If you have any queries regarding your order please email gde-pass@student.42.fr';
+            $headers = array(
+                'From' => 'project.camagru.42@gmail.com',
+                'Reply-To' => 'gde-pass@student.42.fr',
+                'X-Mailer' => 'PHP/' . phpversion()
+            );
+            #send the mail
+            mail($to, $subject, $message, $headers);
+            # Redirection to login page
+            echo "
+             <script language='JavaScript' type='text/javascript'>
+                 window.location.replace('../form/form_login.php?email=sent');
+             </script>";
     }
 }
-
 include '../footer.php';
 ?>
