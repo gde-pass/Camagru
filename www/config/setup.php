@@ -21,6 +21,7 @@ include 'database.php';
 		`lastname` VARCHAR(255) NOT NULL ,
 		`confirm` BOOLEAN NOT NULL DEFAULT FALSE ,
 		`key` VARCHAR(32) NOT NULL ,
+		`reset_token` VARCHAR(32) NOT NULL ,
 		PRIMARY KEY (`id`),
 		UNIQUE `UEMAIL` (`email`),
 		UNIQUE `UNICKNAME` (`nickname`))
