@@ -1,7 +1,7 @@
 <?php
 include '../header.php';
 
-if (isset($_GET['email']))
+if (isset($_GET['email']) AND !empty($_GET['email']))
 {
     echo '<div class="info" style="margin-bottom: 55px;">A confirmation email has been sent to you.</div>';
 }

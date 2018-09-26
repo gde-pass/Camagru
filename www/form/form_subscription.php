@@ -1,11 +1,11 @@
 <?php
 include '../header.php';
 
-if (isset($_GET['email']))
+if (isset($_GET['email']) AND !empty($_GET['email']))
 {
     echo '<div class="error" style="margin-bottom: 55px;">This email address is not available.</div>';
 }
-if (isset($_GET['nickname']))
+if (isset($_GET['nickname']) ANd !empty($_GET['nickname']))
 {
     echo '<div class="error" style="margin-bottom: 55px;">This nickname is not available.</div>';
 }

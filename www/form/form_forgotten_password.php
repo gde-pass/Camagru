@@ -1,9 +1,17 @@
 <?php
 include '../header.php';
 
-if (isset($_GET['email']))
+if (isset($_GET['email']) AND !empty($_GET['email']))
 {
-    echo '<div class="error" style="margin-bottom: 55px;">That email adress does not exist.</div>';
+    switch ($_GET['email'])
+    {
+    case "no":
+        echo '<div class="error" style="margin-bottom: 55px;">That email adress does not exist.</div>';
+        break;
+    case "sent":
+        echo '<div class="info" style="margin-bottom: 55px;">Please follow the instructions in the mail we sent to you</div>';
+        break;
+    }
 }
 ?>
 
