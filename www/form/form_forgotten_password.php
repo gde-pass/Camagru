@@ -1,5 +1,10 @@
 <?php
 include '../header.php';
+
+if (isset($_GET['email']))
+{
+    echo '<div class="error" style="margin-bottom: 55px;">That email adress does not exist.</div>';
+}
 ?>
 
 <div class="main-content">
