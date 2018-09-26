@@ -4,7 +4,7 @@ include '../header.php';
 
 <div class="main-content">
 
-    <form class="form-forgotten-password" method="post" action="#">
+    <form class="form-forgotten-password" method="post" action="/script/script_forgotten_password.php">
 
         <div class="form-forgotten-password-with-email">
 
@@ -17,7 +17,7 @@ include '../header.php';
                 <div class="form-row">
                     <label>
                         <span>Email</span>
-                        <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input type="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="3" maxlength="254">
                     </label>
                 </div>
 
