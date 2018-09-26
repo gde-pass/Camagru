@@ -1,5 +1,4 @@
 <?php
-include '../header.php';
 include '../config/database.php';
 
 function server_pattern_check($email)
@@ -50,7 +49,11 @@ if (isset($_POST['email']) AND !empty($_POST['email']) AND server_pattern_check(
         'Reply-To' => 'gde-pass@student.42.fr',
         'X-Mailer' => 'PHP/' . phpversion()
     );
+    #send the mail
+    mail($to, $subject, $message, $headers);
+    echo "
+     <script language='JavaScript' type='text/javascript'>
+         window.location.replace('../form/form_forgotten_password.php?email=sent');
+     </script>";
 }
-
-include '../footer.php';
 ?>
