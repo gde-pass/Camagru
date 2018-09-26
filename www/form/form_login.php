@@ -40,7 +40,7 @@ if (isset($_GET['email']))
             </div>
 
             <p>
-                <a href="#" class="form-forgotten-password">Forgotten password</a>
+                <a href="/form/form_forgotten_password.php" class="form-forgotten-password">Forgotten Password</a>
                 &middot;
                 <a href="/form/form_subscription.php" class="form-create-an-account">Create an account &rarr;</a>
             </p>
