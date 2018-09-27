@@ -16,20 +16,20 @@ if (isset($_GET['email']) AND !empty($_GET['email']) && isset($_GET['token']) AN
     $sql = $dbh->prepare("SELECT * FROM `users` WHERE `users`.`email` = ? AND `users`.`reset_token` = ?");
     $sql->execute([$email, $token]);
     $token_availability = $sql->fetch(PDO::FETCH_ASSOC);
-    #Check if the token is outdating
+    #Check if the token is outdating and valid
+    $time1 = date("Y-m-d H:i:s");
+    $time2 = $token_availability['date_token'];
+    $hourdiff = round((strtotime($time1) - strtotime($time2))/3600, 1);
 
-    $datetime1 = new DateTime('2009-10-11');
-    $datetime2 = new DateTime('2009-10-13');
-    $interval = $datetime1->diff($datetime2);
-    echo $interval->format('%R%h');
-
-
-    if ($token_availability['reset_token'] == $token)
+    if ($hourdiff >= 24 OR $token_availability['reset_token'] != $token)
     {
-
+        $show_form = FALSE;
+        echo '<div class="error">This link has expired, please do a new reset password query.</div>';
     }
-
-
+    else
+    {
+        $show_form = TRUE;
+    }
 }
 else
 {
