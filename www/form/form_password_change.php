@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../header.php';
 include '../config/database.php';
 
@@ -28,6 +29,8 @@ if (isset($_GET['email']) AND !empty($_GET['email']) && isset($_GET['token']) AN
     }
     else
     {
+        $_SESSION['token'] = $token;
+        $_SESSION['email'] = $email;
         $show_form = TRUE;
     }
 }
