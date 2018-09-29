@@ -24,7 +24,7 @@ session_start();
 
     		<nav>
     			<a href="/index.php">Home</a>
-    			<a href="#" class="selected">My Gallery</a>
+    			<a href="/user/mygallery.php" class="selected">My Gallery</a>
     			<a href="#">Pricing</a>
     		</nav>
 
