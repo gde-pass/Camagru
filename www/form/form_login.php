@@ -9,11 +9,19 @@ if (isset($_GET['password']) AND !empty($_GET['password']))
 {
     echo '<div class="success" style="margin-bottom: 55px;">Your password has been successfully changed. Please login using your new password.</div>';
 }
+if (isset($_GET['log']) AND !empty($_GET['log']))
+{
+    echo '<div class="error" style="margin-bottom: 55px;">Wrong email or password. Please try again</div>';
+}
+if (isset($_GET['confirm']) AND !empty($_GET['confirm']))
+{
+    echo '<div class="warning" style="margin-bottom: 55px;">You have to confirm your account first, please check the mailbox you used for subscribe</div>';
+}
 ?>
 
 <div class="main-content">
 
-    <form class="form-login" method="post" action="#">
+    <form class="form-login" method="post" action="/script/script_login.php">
 
         <div class="form-log-in-with-email">
 
