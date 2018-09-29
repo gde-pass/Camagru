@@ -89,7 +89,7 @@
 
 /* The user menu */
 
-.header-login-signup .header-limiter .header-user-menu{
+.header-user-menu{
 	position: relative;
 	float:right;
 	background-color:#3a3c3e;
@@ -98,7 +98,7 @@
 	border-radius:2px;
 }
 
-.header-login-signup .header-limiter .header-user-menu:before{
+.header-user-menu:before{
 	content:'';
 	width:0;
 	height:0;
@@ -109,7 +109,7 @@
 	border-top-color:#fff;
 }
 
-.header-login-signup .header-limiter .header-user-menu ul{
+.header-user-menu ul{
 	display: none;
 	font:bold 13px Arial, Helvetica, sans-serif;
 	background-color: inherit;
@@ -125,25 +125,25 @@
 	box-sizing: border-box;
 }
 
-.header-login-signup .header-user-menu:active ul,
-.header-login-signup .header-user-menu:hover ul,
+.header-user-menu:active ul,
+.header-user-menu:hover ul,
 .header-login-signup .header-user-menu.show ul{
 	display:block;
 }
 
-.header-login-signup .header-user-menu ul li{
+.header-user-menu ul li{
 	padding:5px;
 }
 
-.header-login-signup .header-user-menu ul li a:hover{
+.header-user-menu ul li a:hover{
 	opacity:0.9;
 }
 
-.header-login-signup .header-user-menu ul li a.highlight{
+.header-user-menu ul li a.highlight{
 	color:#e9ac09;
 }
 
-.header-login-signup .header-user-menu img{
+.header-user-menu img{
 	border-radius:50%;
 	position:absolute;
 	top:6px;
@@ -180,6 +180,11 @@
 	.header-login-signup .header-limiter ul {
 		display: none;
 	}
+
+	.header-user-menu {
+		display: none;
+	}
+
 
 }
 
