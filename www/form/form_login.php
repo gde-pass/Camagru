@@ -1,4 +1,15 @@
 <?php
+session_start();
+
+if ($_SESSION['logged'] == TRUE)
+{
+    echo "
+        <script language='JavaScript' type='text/javascript'>
+            window.location.replace('../index.php?logged=yes');
+        </script>";
+    exit(0);
+}
+
 include '../header.php';
 
 if (isset($_GET['email']) AND !empty($_GET['email']))

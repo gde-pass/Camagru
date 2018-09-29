@@ -9,6 +9,14 @@ if (isset($_GET['nickname']) AND !empty($_GET['nickname']))
 {
     echo '<div class="error" style="margin-bottom: 55px;">This nickname is not available.</div>';
 }
+if ($_SESSION['logged'] == TRUE)
+{
+    echo "
+        <script language='JavaScript' type='text/javascript'>
+            window.location.replace('../index.php?subscribe=yes');
+        </script>";
+    exit(0);
+}
 ?>
 
 <div class="main-content">
