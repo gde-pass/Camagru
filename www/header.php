@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -24,10 +28,29 @@
     			<a href="#">Pricing</a>
     		</nav>
 
-    		<ul>
-    			<li><a href="/form/form_login.php">Login</a></li>
-    			<li><a href="/form/form_subscription.php">Sign up</a></li>
-    		</ul>
+        <?php
+        if ($_SESSION['logged'] == FALSE)
+        {
+            echo"
+            <ul>
+    			<li><a href='/form/form_login.php'>Login</a></li>
+    			<li><a href='/form/form_subscription.php'>Sign up</a></li>
+    		</ul>";
+        }
+        else
+        {
+            echo"
+            <div class='header-user-menu'>
+                <img src='img/icon/default_pp.png' alt='User Image'/>
+
+                <ul>
+                    <li><a href='#'>Settings</a></li>
+                    <li><a href='#'>Payments</a></li>
+                    <li><a href='#' class='highlight'>Logout</a></li>
+                </ul>
+            </div>";
+        }
+        ?>
 
     	</div>
 

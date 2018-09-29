@@ -87,6 +87,70 @@
 	border-radius: 3px;
 }
 
+/* The user menu */
+
+.header-login-signup .header-limiter .header-user-menu{
+	position: relative;
+	float:right;
+	background-color:#3a3c3e;
+	width:75px;
+	height:40px;
+	border-radius:2px;
+}
+
+.header-login-signup .header-limiter .header-user-menu:before{
+	content:'';
+	width:0;
+	height:0;
+	top: 18px;
+	left: 15px;
+	position:absolute;
+	border:5px solid transparent;
+	border-top-color:#fff;
+}
+
+.header-login-signup .header-limiter .header-user-menu ul{
+	display: none;
+	font:bold 13px Arial, Helvetica, sans-serif;
+	background-color: inherit;
+	list-style: none;
+	position: absolute;
+	text-align: center;
+	width: 125px;
+	top: 25px;
+	right: 0;
+	padding: 10px;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+
+.header-login-signup .header-user-menu:active ul,
+.header-login-signup .header-user-menu:hover ul,
+.header-login-signup .header-user-menu.show ul{
+	display:block;
+}
+
+.header-login-signup .header-user-menu ul li{
+	padding:5px;
+}
+
+.header-login-signup .header-user-menu ul li a:hover{
+	opacity:0.9;
+}
+
+.header-login-signup .header-user-menu ul li a.highlight{
+	color:#e9ac09;
+}
+
+.header-login-signup .header-user-menu img{
+	border-radius:50%;
+	position:absolute;
+	top:6px;
+	max-width: 28px;
+	right:10px;
+}
+
 /* Making the header responsive */
 
 @media all and (max-width: 750px) {

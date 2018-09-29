@@ -13,15 +13,15 @@ include 'header.php';
 			<div class="cube-container">
 				<div class="photo-cube">
 
-					<img class="front"src="http://gdurl.com/PdNJ" alt="">
+					<img class="front"src="img/Demo/1.jpeg" alt="">
 					<div class="back photo-desc">
 					  <h3>Earth from Space</h3>
 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 						<a href="#" class="button">Like</a>
                         <a href="#" class="button">Comment</a>
 					</div>
-					<img class="left" src="http://gdurl.com/zDJz" alt="">
-					<img class="right" src="http://gdurl.com/JLdx" alt="">
+					<img class="left" src="img/Demo/2.jpeg" alt="">
+					<img class="right" src="img/Demo/3.jpeg" alt="">
 
 				</div>
 			</div>
@@ -29,15 +29,15 @@ include 'header.php';
 			<div class="cube-container">
 				<div class="photo-cube">
 
-					<img class="front" src="http://gdurl.com/oxTp" alt="">
+					<img class="front" src="img/Demo/4.jpeg" alt="">
 					<div class="back photo-desc">
 					  <h3>Space Images</h3>
 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                         <a href="#" class="button">Like</a>
                         <a href="#" class="button">Comment</a>
 					</div>
-					<img class="left" src="http://gdurl.com/A2BF" alt="">
-					<img class="right" src="http://gdurl.com/wt4v" alt="">
+					<img class="left" src="img/Demo/5.jpg" alt="">
+					<img class="right" src="img/Demo/6.jpeg" alt="">
 
 				</div>
 			</div>
@@ -45,15 +45,15 @@ include 'header.php';
 			<div class="cube-container">
 				<div class="photo-cube">
 
-					<img class="front" src="http://gdurl.com/tvtR" alt="">
+					<img class="front" src="img/Demo/7.png" alt="">
 					<div class="back photo-desc">
 					  <h3>The Milky Way</h3>
 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                         <a href="#" class="button">Like</a>
                         <a href="#" class="button">Comment</a>
 					</div>
-					<img class="left" src="http://gdurl.com/tvtR" alt="">
-					<img class="right" src="http://gdurl.com/VjHH" alt="">
+					<img class="left" src="img/Demo/8.jpeg" alt="">
+					<img class="right" src="img/Demo/9.jpg" alt="">
 
 				</div>
 			</div>
