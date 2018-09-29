@@ -33,27 +33,30 @@ if (isset($_POST['email']) AND !empty($_POST['email']) AND server_pattern_check(
                  window.location.replace('../form/form_forgotten_password.php?email=no');
              </script>";
     }
-    #Generate the reset_token
-    $reset_token = md5(microtime(TRUE)*100000);
-    $datetime = date("Y-m-d H:i:s");
-    #set the sql request for insert the new token and date of generating
-    $sql = $dbh->prepare("UPDATE `users` SET `reset_token` = ?, `date_token` = ? WHERE `users`.`email` = ?");
-    #run the sql request
-    $sql->execute([$reset_token, $datetime, $email]);
-    # Setting up mail
-    $to      = $email;
-    $subject = 'Reset Password';
-    $message = "A request to reset your password for your account has been made from the following IP adress: $ip\r\nTo reset your password please click on this link or copy and paste this URL into your browser (link expires in 24 hours):\r\nhttp://192.168.99.100/form/form_password_change.php?token=".urlencode($reset_token)."&email=".urlencode($email)."\r\n\nThis is an automatically generated email, please do not reply to it.\r\nIf you have any queries regarding your order please email gde-pass@student.42.fr";
-    $headers = array(
-        'From' => 'project.camagru.42@gmail.com',
-        'Reply-To' => 'gde-pass@student.42.fr',
-        'X-Mailer' => 'PHP/' . phpversion()
-    );
-    #send the mail
-    mail($to, $subject, $message, $headers);
-    echo "
-     <script language='JavaScript' type='text/javascript'>
-         window.location.replace('../form/form_forgotten_password.php?email=sent');
-     </script>";
+    else
+    {
+        #Generate the reset_token
+        $reset_token = md5(microtime(TRUE)*100000);
+        $datetime = date("Y-m-d H:i:s");
+        #set the sql request for insert the new token and date of generating
+        $sql = $dbh->prepare("UPDATE `users` SET `reset_token` = ?, `date_token` = ? WHERE `users`.`email` = ?");
+        #run the sql request
+        $sql->execute([$reset_token, $datetime, $email]);
+        # Setting up mail
+        $to      = $email;
+        $subject = 'Reset Password';
+        $message = "A request to reset your password for your account has been made from the following IP adress: $ip\r\nTo reset your password please click on this link or copy and paste this URL into your browser (link expires in 24 hours):\r\nhttp://192.168.99.100/form/form_password_change.php?token=".urlencode($reset_token)."&email=".urlencode($email)."\r\n\nThis is an automatically generated email, please do not reply to it.\r\nIf you have any queries regarding your order please email gde-pass@student.42.fr";
+        $headers = array(
+            'From' => 'project.camagru.42@gmail.com',
+            'Reply-To' => 'gde-pass@student.42.fr',
+            'X-Mailer' => 'PHP/' . phpversion()
+        );
+        #send the mail
+        mail($to, $subject, $message, $headers);
+        echo "
+         <script language='JavaScript' type='text/javascript'>
+             window.location.replace('../form/form_forgotten_password.php?email=sent');
+         </script>";
+    }
 }
 ?>
