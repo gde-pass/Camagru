@@ -46,7 +46,7 @@ session_start();
                 <ul>
                     <li><a href='#'>Settings</a></li>
                     <li><a href='#'>Payments</a></li>
-                    <li><a href='#' class='highlight'>Logout</a></li>
+                    <li><a href='script/logout.php' class='highlight'>Logout</a></li>
                 </ul>
             </div>";
         }
