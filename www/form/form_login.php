@@ -5,6 +5,10 @@ if (isset($_GET['email']) AND !empty($_GET['email']))
 {
     echo '<div class="info" style="margin-bottom: 55px;">A confirmation email has been sent to you.</div>';
 }
+if (isset($_GET['password']) AND !empty($_GET['password']))
+{
+    echo '<div class="success" style="margin-bottom: 55px;">Your password has been successfully changed. Please login using your new password.</div>';
+}
 ?>
 
 <div class="main-content">
