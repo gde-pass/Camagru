@@ -45,7 +45,7 @@ session_start();
                 <img src='/img/icon/default_pp.png' alt='User Image'/>
 
                 <ul>
-                    <li><a href='#'>Settings</a></li>
+                    <li><a href='/form/form_settings.php'>Settings</a></li>
                     <li><a href='/script/logout.php' class='highlight'>Logout</a></li>
                 </ul>
             </div>";
