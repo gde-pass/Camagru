@@ -28,6 +28,10 @@ if (isset($_GET['confirm']) AND !empty($_GET['confirm']))
 {
     echo '<div class="warning" style="margin-bottom: 55px;">You have to confirm your account first, please check the mailbox you used for subscribe</div>';
 }
+if (isset($_GET['logged']) AND !empty($_GET['logged']))
+{
+    echo '<div class="warning" style="margin-bottom: 55px;">You have to login first</div>';
+}
 ?>
 
 <div class="main-content">

@@ -13,6 +13,7 @@ session_start();
     <link href="/style/footer.css" rel="stylesheet" type="text/css">
     <link href="/style/msgbox.css" rel="stylesheet" type="text/css">
     <link href="/style/forgotten_password.css" rel="stylesheet" type="text/css">
+    <link href="/style/profile_header.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -41,11 +42,10 @@ session_start();
         {
             echo"
             <div class='header-user-menu'>
-                <img src='img/icon/default_pp.png' alt='User Image'/>
+                <img src='/img/icon/default_pp.png' alt='User Image'/>
 
                 <ul>
                     <li><a href='#'>Settings</a></li>
-                    <li><a href='#'>Payments</a></li>
                     <li><a href='script/logout.php' class='highlight'>Logout</a></li>
                 </ul>
             </div>";
