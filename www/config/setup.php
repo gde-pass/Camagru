@@ -23,7 +23,7 @@ include 'database.php';
 		`key` VARCHAR(32) NOT NULL ,
 		`reset_token` VARCHAR(32) NULL ,
 		`date_token` DATETIME NULL ,
-		`avatar` TEXT,
+		`avatar` TEXT NOT NULL ,
 		PRIMARY KEY (`id`),
 		UNIQUE `UEMAIL` (`email`),
 		UNIQUE `UNICKNAME` (`nickname`))
