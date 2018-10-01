@@ -17,7 +17,7 @@ if ($_SESSION['logged'] == FALSE)
 <section class="profile">
   <header class="header">
     <div class="details">
-      <img src="/img/icon/default_pp.png" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic">
+      <img src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic">
       <h1 class="heading"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
       <div class="nickname">
         <p><?php echo $_SESSION['nickname']; ?></p>

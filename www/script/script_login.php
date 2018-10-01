@@ -43,6 +43,7 @@ if (isset($_POST["email"], $_POST["password"]) AND !empty($_POST["email"]) AND !
             $_SESSION['lastname'] = $user_validity['lastname'];
             $_SESSION['nickname'] = $user_validity['nickname'];
             $_SESSION['email'] = $user_validity['email'];
+            $_SESSION['avatar'] = $user_validity['avatar'];
             #redirection to the index page
             echo "
                 <script language='JavaScript' type='text/javascript'>

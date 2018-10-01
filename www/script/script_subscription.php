@@ -83,11 +83,12 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
             }
             #Hash the password
             $password = hash('whirlpool', $password);
+            $avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));
             #set the sql request for insert the new user
-            $sql = $dbh->prepare("INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `key`)
-                    VALUES (NULL, ?, ?, ?, ?, ?, ?)");
+            $sql = $dbh->prepare("INSERT INTO `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `key`, `avatar`)
+                    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)");
             #run the sql request
-            $sql->execute([$nickname, $password, $email, $firstname, $lastname, $key]);
+            $sql->execute([$nickname, $password, $email, $firstname, $lastname, $key, $avatar]);
             # Setting up mail
             $to      = $email;
             $subject = 'Email Confirmation';
