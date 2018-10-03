@@ -14,7 +14,7 @@
   <header class="header">
     <div class="details">
       <label for="file-input">
-        <img src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic" style="cursor: pointer;" onmouseover="this.src='/img/icon/folder.png'" onmouseout="this.src='data:image/png;base64,<?= $_SESSION['avatar'] ?>'">
+        <img id="avatar" src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic" style="cursor: pointer;" onmouseover="this.src='/img/icon/folder.png'" onmouseout="this.src='data:image/png;base64,<?= $_SESSION['avatar'] ?>'">
       </label>
       <input id='file-input' type='file' accept="image/*" onchange="changeAvatar(this)" hidden>
       <h1 class="heading"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
@@ -31,11 +31,21 @@
 <script>
   function changeAvatar() {
     const file = document.getElementById('file-input').files[0];
+    const img = document.getElementById('avatar');
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', '/script/setting.php', true);
+      xhr.onload = (e) => {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            img.value = decodeURIComponent(escape(window.atob( xhr.statusText )));
+            img.innerHtml = img;
+          }
+        }
+
+      }
       console.log(reader.result);
     };
     reader.onerror = function (error) {
