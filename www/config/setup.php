@@ -30,7 +30,7 @@ include 'database.php';
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
-    }
+	  }
 	catch(PDOException $e)
     {
 		echo $sql . "\n" . $e->getMessage();
