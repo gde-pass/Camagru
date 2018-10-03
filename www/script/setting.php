@@ -12,6 +12,7 @@ if (isset($_POST['avatar']) AND !empty($_POST['avatar']))
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $sql = $dbh->prepare("UPDATE `users` SET `avatar` = ?");
     $sql->execute([$avatar]);
+    $_SESSION['avatar'] = $avatar;
     http_response_code(200);
     return ($avatar);
 }
