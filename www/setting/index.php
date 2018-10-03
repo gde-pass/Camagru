@@ -40,12 +40,11 @@
       xhr.onload = (e) => {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            img.value = decodeURIComponent(escape(window.atob( xhr.statusText )));
-            img.innerHtml = img;
+            console.log(status);
           }
         }
-
       }
+      xhr.send("?avatar=" + reader.result);
       console.log(reader.result);
     };
     reader.onerror = function (error) {
