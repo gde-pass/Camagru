@@ -43,7 +43,7 @@ session_start();
         {
             echo"
             <div class='header-user-menu'>
-                <img src='/img/icon/default_pp.png' alt='User Image'/>
+                <img src='data:image/png;base64,".$_SESSION['avatar']."' alt='User Image'/>
 
                 <ul>
                     <li><a href='/setting'>Settings</a></li>
