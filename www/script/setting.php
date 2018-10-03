@@ -2,7 +2,8 @@
 session_start();
 include '../config/database.php';
 
-if (isset($_POST['avatar']) AND !empty($_POST['avatar']))
+
+if (isset($_POST['avatar']) && !empty($_POST['avatar']))
 {
     #convert into local variable
     $avatar = $_POST['avatar'];
