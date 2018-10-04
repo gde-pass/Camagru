@@ -2,7 +2,7 @@
 session_start();
 include '../config/database.php';
 
-$maxsize = 2097152;
+$maxsize = 100000;
 $valid_extensions = array('jpg', 'jpeg', 'gif', 'png');
 
 if (isset($_FILES['avatar']) && !empty($_FILES['avatar']['name'])) {

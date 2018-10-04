@@ -29,10 +29,8 @@ if (isset($_POST['password']) AND !empty($_POST['password']) AND server_pattern_
     $sql = $dbh->prepare("UPDATE `users` SET `password` = ?, `reset_token` = NULL, `date_token` = NULL WHERE `users`.`email` = ? AND `users`.`reset_token` = ?");
     $sql->execute([$password, $email, $token]);
     # redirection
-    echo "
-     <script language='JavaScript' type='text/javascript'>
-         window.location.replace('../form/form_login.php?password=changed');
-     </script>";
+    header('Location: ../form/form_login.php?password=changed');
+    exit();
 }
 
 ?>
