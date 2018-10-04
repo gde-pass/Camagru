@@ -2,11 +2,13 @@
 session_start();
 include '../config/database.php';
 
+print_r($_FILES);
 
-if (isset($_POST['avatar']) && !empty($_POST['avatar']))
+if (isset($_FILES['avatar']) && !empty($_FILES['avatar']['name']))
 {
     #convert into local variable
-    $avatar = $_POST['avatar'];
+    $avatar = $_FILES['avatar']['name'];
+    echo $avatar;
     $email = $_SESSION['email'];
     $nickname = $_SESSION['nickname'];
     #Connection to DB camagru

@@ -13,7 +13,7 @@
 <section class="profile">
   <header class="header">
     <div class="details">
-      <form name="form" method="POST" action="/script/setting.php">
+      <form name="form" method="POST" enctype="multipart/form-data" action="../script/setting.php">
       <label for="file-input">
         <img id="avatar" src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic" style="cursor: pointer;" onmouseover="this.src='/img/icon/folder.png'" onmouseout="this.src='data:image/png;base64,<?= $_SESSION['avatar'] ?>'">
       </label>
