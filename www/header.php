@@ -46,7 +46,7 @@ session_start();
                 <img src='data:image/png;base64,".$_SESSION['avatar']."' alt='User Image'/>
 
                 <ul>
-                    <li><a href='/setting'>Settings</a></li>
+                    <li><a href='/user/setting.php'>Settings</a></li>
 
                     <li><a href='/script/logout.php' class='highlight'>Logout</a></li>
                 </ul>
