@@ -12,6 +12,39 @@ if ($_SESSION['logged'] == FALSE)
         </script>";
     exit(0);
 }
+switch ($_GET['msg'])
+{
+    case 'uploaded':
+        echo '<div class="success" style="margin-bottom: 55px;">Picture successfully uploaded</div>';
+        break;
+
+    case 'invalid_extension':
+        echo '<div class="error" style="margin-bottom: 55px;">You tried to upload a invalid extension, please use png, jpeg, jpg or gif</div>';
+        break;
+
+    case 'unknow_error':
+        echo '<div class="error" style="margin-bottom: 55px;">Something wrong happenned</div>';
+        break;
+
+    case 'to_heavy':
+        echo '<div class="error" style="margin-bottom: 55px;">Your picture is to heavy, please upload a picture under 2Mo</div>';
+        break;
+
+    case 'empty':
+        echo '<div class="error" style="margin-bottom: 55px;">You sent nothing !</div>';
+        break;
+}
+
+$dir_path = "../data/" . $_SESSION['nickname'];
+if (is_dir($dir_path) == FALSE)
+{
+    mkdir($dir_path, 0777, true);
+}
+
+$dir_contenu = glob($dir_path . '/*.*');
+array_multisort(array_map('filemtime', $dir_contenu), SORT_NUMERIC, SORT_DESC, $dir_contenu);
+
+
 ?>
 
 <section class="profile">
@@ -25,6 +58,27 @@ if ($_SESSION['logged'] == FALSE)
     </div>
   </header>
 </section>
+
+<form method="post" enctype="multipart/form-data" action="../script/upload_img.php">
+ <div>
+   <label for="file">Sélectionner le fichier à envoyer</label>
+   <input type="file" id="file" name="img" accept=".jpg, .jpeg, .png, .gif">
+ </div>
+ <div>
+   <button>Envoyer</button>
+ </div>
+</form>
+
+<?php
+for ($i=0; $i<count($dir_contenu); $i++)
+{
+    echo '<img src="'. $dir_contenu[$i].'" alt="">';
+
+}
+?>
+        </div>
+    </div>
+</div>
 
 <?php
 include '../footer.php';
