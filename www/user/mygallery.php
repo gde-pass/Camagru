@@ -33,6 +33,10 @@ switch ($_GET['msg'])
     case 'empty':
         echo '<div class="error" style="margin-bottom: 55px;">You sent nothing !</div>';
         break;
+
+    case 'to_mutch':
+        echo '<div class="error" style="margin-bottom: 55px;">You sent more than 3 pictures !</div>';
+        break;
 }
 
 $dir_path = "../data/" . $_SESSION['nickname'];
@@ -44,6 +48,10 @@ if (is_dir($dir_path) == FALSE)
 $dir_contenu = glob($dir_path . '/*.*');
 array_multisort(array_map('filemtime', $dir_contenu), SORT_NUMERIC, SORT_DESC, $dir_contenu);
 
+$nbsquare = round(count($dir_contenu) / 3);
+$nblastsquarefaces = count($dir_contenu) % 3;
+echo $nbsquare . "\n";
+echo $nblastsquarefaces;
 
 ?>
 
@@ -55,31 +63,37 @@ array_multisort(array_map('filemtime', $dir_contenu), SORT_NUMERIC, SORT_DESC, $
       <div class="nickname">
         <p><?php echo $_SESSION['nickname']; ?></p>
       </div>
+      <form method="post" enctype="multipart/form-data" action="../script/upload_img.php">
+       <div>
+         <label for="file">Sélectionner le fichier à envoyer</label>
+         <input type="file" id="file" name="img[]" multiple accept=".jpg, .jpeg, .png, .gif">
+       </div>
+         <button>Envoyer</button>
+       </div>
+      </form>
     </div>
   </header>
 </section>
 
-<form method="post" enctype="multipart/form-data" action="../script/upload_img.php">
- <div>
-   <label for="file">Sélectionner le fichier à envoyer</label>
-   <input type="file" id="file" name="img" accept=".jpg, .jpeg, .png, .gif">
- </div>
- <div>
-   <button>Envoyer</button>
- </div>
-</form>
 
 <?php
-for ($i=0; $i<count($dir_contenu); $i++)
+while ($i <= $nbsquare)
 {
-    echo '<img src="'. $dir_contenu[$i].'" alt="">';
-
+    if ($i == $nbsquare AND $nblastsquarefaces == 2)
+    {
+        echo "2 faces";
+        exit();
+    }
+    elseif ($i == $nbsquare AND $nblastsquarefaces == 1)
+    {
+        echo "1 face";
+        exit();
+    }
+    else
+    {
+        echo 'HEY';
+    }
+    $i++;
 }
-?>
-        </div>
-    </div>
-</div>
-
-<?php
 include '../footer.php';
 ?>
