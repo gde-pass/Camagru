@@ -78,7 +78,23 @@ function move_files(string $dir_path)
             $tmp_name = $_FILES["img"]["tmp_name"][$key];
             $extension_upload = strtolower(substr(strrchr($_FILES["img"]["name"][$key], "."), 1));
             $name = uniqid() . "." . $extension_upload;
-            $move = move_uploaded_file($_FILES['img']['tmp_name'], $path);
+            $move = move_uploaded_file($tmp_name, "$dir_path/$name");
+            if ($move)
+            {
+               $msg = "uploaded";
+               echo "
+                   <script language='JavaScript' type='text/javascript'>
+                       window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
+                   </script>";
+            }
+        }
+        else
+        {
+            $msg = "unknow_error";
+            echo "
+                <script language='JavaScript' type='text/javascript'>
+                    window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
+                </script>";
         }
     }
 }
@@ -89,67 +105,4 @@ if ($nbimg >= 1 AND $nbimg <= 3)
     $dir_path = create_cube_dir($nbimg);
     move_files($dir_path);
 }
-
-// if (isset($_FILES['img']) AND !empty($_FILES['img']['name']))
-// {
-//     $maxsize = 2097152;
-//     $valid_extensions = array('jpg', 'jpeg', 'gif', 'png');
-//     $name = md5(microtime(TRUE)*100000);
-//     if ($_FILES['img']['size'] <= $maxsize)
-//     {
-//         $extension_upload = strtolower(substr(strrchr($_FILES['img']['name'], "."), 1));
-//         if (in_array($extension_upload, $valid_extensions))
-//         {
-//             $path = "../data/" . $_SESSION['nickname'] . "/" . $name . "." . $extension_upload;
-//             $dir_path = "../data/" . $_SESSION['nickname'];
-//             if (is_dir($dir_path) == FALSE)
-//             {
-//                 mkdir($dir_path, 0777, true);
-//             }
-//             $dir_contenu = scandir($dir_path);
-//             $move = move_uploaded_file($_FILES['img']['tmp_name'], $path);
-//             if ($move)
-//             {
-//                 $msg = "uploaded";
-//                 echo "
-//                     <script language='JavaScript' type='text/javascript'>
-//                         window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
-//                     </script>";
-//             }
-//             else
-//             {
-//                 $msg = "unknow_error";
-//                 echo "
-//                     <script language='JavaScript' type='text/javascript'>
-//                         window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
-//                     </script>";
-//             }
-//         }
-//         else
-//         {
-//             $msg = "invalid_extension";
-//             echo "
-//                 <script language='JavaScript' type='text/javascript'>
-//                     window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
-//                 </script>";
-//         }
-//     }
-//     else
-//     {
-//         $msg = "to_heavy";
-//         echo "
-//             <script language='JavaScript' type='text/javascript'>
-//                 window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
-//             </script>";
-//     }
-// }
-// else
-// {
-//     $msg = "empty";
-//     echo "
-//         <script language='JavaScript' type='text/javascript'>
-//             window.location.replace('../user/mygallery.php?msg=".urlencode($msg)."');
-//         </script>";
-// }
-
 ?>
