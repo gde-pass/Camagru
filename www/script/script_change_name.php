@@ -7,12 +7,12 @@
            header('Location: /user/setting.php?msg=invalid_name');
            exit();
       }
+      return true;
   }
 
   session_start();
 
   if (!empty($_POST['firstname']) && isset($_POST['firstname']) && server_pattern_check($_POST['firstname'])) {
-    echo('first');
     $nickname = $_SESSION['nickname'];
     $firstname = $_POST['firstname'];
     #Connection to DB camagru
@@ -22,12 +22,11 @@
     $sql = $dbh->prepare("UPDATE `users` SET `firstname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$firstname, $nickname]);
     $_SESSION['firstname'] = $_POST['firstname'];
-    header('Location: /user/setting.php?msg=uploaded');
+    header('Location: /user/setting.php?msg=name_change');
     exit();
   }
 
   if (!empty($_POST['lastname']) && isset($_POST['lastname']) && server_pattern_check($_POST['lastname'])) {
-    echo("last");
     $lastname = $_POST['lastname'];
     $nickname = $_SESSION['nickname'];
     #Connection to DB camagru
@@ -37,10 +36,10 @@
     $sql = $dbh->prepare("UPDATE `users` SET `lastname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$lastname, $nickname]);
     $_SESSION['lastname'] = $_POST['lastname'];
-    header('Location: /user/setting.php?msg=uploaded');
+    header('Location: /user/setting.php?msg=name_change');
     exit();
   }
-  header('Location: /user/setting.php?msg=empty');
+  header('Location: /user/setting.php?msg=empty_name');
   exit();
 
 ?>
