@@ -40,7 +40,6 @@
         <input id='file-input' name="avatar" type='file' accept="image/*" onchange="changeImg()" hidden>
         <input type="submit" name="Change" id="change" hidden>
       </form>
-<<<<<<< HEAD
       <h1 class="heading">Edit Profile :</h1>
       <form action="/script/script_change_password_logged.php" method="POST">
         <input type="password" class="setting_input" placeholder="New Password 🔒" name='password' required>
@@ -51,9 +50,7 @@
         <input type="input" name="lastname" class="setting_input" placeholder="<?= $_SESSION['lastname']?>"/>
         <input type="submit" hidden>
       </form>
-=======
       <h1 class="heading"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
->>>>>>> f73304a798b4d76ba36161eb2ad0f428198ecdef
     </div>
   </header>
 </section>
