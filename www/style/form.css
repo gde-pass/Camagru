@@ -5,6 +5,12 @@ html{
     overflow-y: scroll;
 }
 
+.input-setting {
+  border: none;
+  border-bottom: 1px solid #00a2ff;
+  background-color: #eaeaea
+}
+
 .form-register{
     max-width: 1000px;
     width: 100%;

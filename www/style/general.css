@@ -6,6 +6,12 @@
  *    user zoom.
  */
 
+ .input-setting {
+   border: none;
+   border-bottom: 1px solid #00a2ff;
+   background-color: #eaeaea
+ }
+
 html {
   font-family: sans-serif; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
