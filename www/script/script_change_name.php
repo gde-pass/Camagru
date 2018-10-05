@@ -4,7 +4,7 @@
   function server_pattern_check($name)
   {
       if (!preg_match("/^[À-ÿa-zA-Z' -]+$/",$name)) {
-           header('Location: /user/setting.php?msg=invalid_name');
+           header('Location: /form/form_settings.php?msg=invalid_name');
            exit();
       }
       return true;
@@ -22,7 +22,7 @@
     $sql = $dbh->prepare("UPDATE `users` SET `firstname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$firstname, $nickname]);
     $_SESSION['firstname'] = $_POST['firstname'];
-    header('Location: /user/setting.php?msg=name_change');
+    header('Location: /form/form_settings.php?msg=name_change');
     exit();
   }
 
@@ -36,10 +36,9 @@
     $sql = $dbh->prepare("UPDATE `users` SET `lastname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$lastname, $nickname]);
     $_SESSION['lastname'] = $_POST['lastname'];
-    header('Location: /user/setting.php?msg=name_change');
+    header('Location: /form/form_settings.php?msg=name_change');
     exit();
   }
-  header('Location: /user/setting.php?msg=empty');
+  header('Location: //form/form_settings.php?msg=empty');
   exit();
-
 ?>

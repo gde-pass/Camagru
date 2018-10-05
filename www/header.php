@@ -28,6 +28,9 @@ session_start();
     		<nav>
     			<a href="/index.php">Home</a>
     			<a href="/user/mygallery.php" class="selected">My Gallery</a>
+          <?php if ($_SESSION['logged'] == 1) {
+          echo("<a href='/user/camagru.php'>Camera</a>");
+          } ?>
     		</nav>
 
         <?php
@@ -46,7 +49,7 @@ session_start();
                 <img src='data:image/png;base64,".$_SESSION['avatar']."' alt='User Image'/>
 
                 <ul>
-                    <li><a href='/user/setting.php'>Settings</a></li>
+                    <li><a href='/form/form_settings.php'>Settings</a></li>
 
                     <li><a href='/script/logout.php' class='highlight'>Logout</a></li>
                 </ul>

@@ -21,24 +21,22 @@ if (isset($_FILES['avatar']) && !empty($_FILES['avatar']['name'])) {
         $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = $dbh->prepare("UPDATE `users` SET `avatar` = ? WHERE `users`.`email` = ? AND `users`.`nickname` = ?");
         $sql->execute([$avatar, $email, $nickname]);
-        header('Location: /user/setting.php?msg=uploaded');
+        header('Location: /form/form_settings.php?msg=uploaded');
         exit();
       }
       else {
-          header('Location: /user/setting.php?msg=invalid_extension');
+          header('Location: /form/form_settings.php?msg=invalid_extension');
           exit();
       }
     }
     else {
-        header('Location: /user/setting.php?msg=to_heavy');
+        header('Location: /form/form_settings.php?msg=to_heavy');
         exit();
     }
 }
 else
 {
-    header('Location: /user/setting.php?msg=empty');
+    header('Location: /form/form_settings.php?msg=empty');
     exit();
 }
-
-
 ?>
