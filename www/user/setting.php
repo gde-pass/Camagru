@@ -32,7 +32,7 @@
 
 <section class="profile">
   <header class="header">
-    <div class="details">
+    <div id="details">
       <form name="form" method="POST" enctype="multipart/form-data" action="../script/setting.php">
         <label for="file-input">
           <img id="avatar" src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic" style="cursor: pointer;" onmouseover="this.src='/img/icon/folder.png'" onmouseout="this.src='data:image/png;base64,<?= $_SESSION['avatar'] ?>'">
@@ -40,14 +40,14 @@
         <input id='file-input' name="avatar" type='file' accept="image/*" onchange="changeImg()" hidden>
         <input type="submit" name="Change" id="change" hidden>
       </form>
-      <h1 class="heading"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
+      <h1 class="heading">Edit Profile :</h1>
       <form action="/script/script_change_password_logged.php" method="POST">
-        <input type="password" placeholder="New Password" name='password' required>
+        <input type="password" class="setting_input" placeholder="New Password 🔒" name='password' required>
       </form>
       <form action="/script/script_change_name.php" method="POST">
-          <input type="input" name="firstname" placeholder="<?= $_SESSION['firstname']?>"/>
+          <input type="input" name="firstname" class="setting_input" placeholder="<?= $_SESSION['firstname']?>"/>
         <br />
-        <input type="input" name="lastname" placeholder="<?= $_SESSION['lastname']?>"/>
+        <input type="input" name="lastname" class="setting_input" placeholder="<?= $_SESSION['lastname']?>"/>
         <input type="submit" hidden>
       </form>
     </div>
