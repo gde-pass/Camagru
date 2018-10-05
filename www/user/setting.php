@@ -27,6 +27,9 @@
     case 'invalid_password':
       echo '<div class="error" style="margin-bottom: 55px;">Invalid password !</div>';
       break;
+    case 'name_change':
+      echo '<div class="success" style="margin-bottom: 55px;">Name successfully changed !</div>';
+      break;
 }
 ?>
 

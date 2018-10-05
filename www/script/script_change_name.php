@@ -39,7 +39,7 @@
     header('Location: /user/setting.php?msg=name_change');
     exit();
   }
-  header('Location: /user/setting.php?msg=empty_name');
+  header('Location: /user/setting.php?msg=empty');
   exit();
 
 ?>
