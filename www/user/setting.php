@@ -35,7 +35,6 @@
 
 <section class="profile">
   <header class="header">
-    <div id="details">
       <form name="form" method="POST" enctype="multipart/form-data" action="../script/setting.php">
         <label for="file-input">
           <img id="avatar" src="data:image/png;base64,<?= $_SESSION['avatar'] ?>" alt="<?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?>" class="profile-pic" style="cursor: pointer;" onmouseover="this.src='/img/icon/folder.png'" onmouseout="this.src='data:image/png;base64,<?= $_SESSION['avatar'] ?>'">
@@ -43,7 +42,6 @@
         <input id='file-input' name="avatar" type='file' accept="image/*" onchange="changeImg()" hidden>
         <input type="submit" name="Change" id="change" hidden>
       </form>
-    </div>
   </header>
 </section>
 
@@ -72,12 +70,12 @@
 <form class="form-forgotten-password" action="/script/script_change_password_logged.php" method="POST">
     <div class="form-row">
         <label>
-            <span>Change Password 🔒 : </span>
+            <span>Change Password : </span>
   <input type="password" placeholder="New Password" name='password' class="input-setting" required>
 </label>
 </div>
 </form>
-<BR />
+<br />
 <form action="/script/script_delaccount.php" method="post">
       <button type="submit" name="button" class="button" style="background-color:red">DELETE YOUR ACCOUNT</button>
 </form>
