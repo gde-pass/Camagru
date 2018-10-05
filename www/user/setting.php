@@ -56,14 +56,14 @@
 <form class="form-register" action="/script/script_change_name.php" method="POST">
     <div class="form-row">
         <label>
-            <span>Change firstname</span>
-    <input type="input" name="firstname" placeholder="<?= $_SESSION['firstname']?>"/>
+            <span>Change firstname : </span>
+    <input type="input" name="firstname" placeholder="<?= $_SESSION['firstname']?>" class="input-setting" />
 </label>
 </div>
 <div class="form-row">
     <label>
-        <span>Change lastname</span>
-    <input type="input" name="lastname" placeholder="<?= $_SESSION['lastname']?>"/>
+        <span>Change lastname : </span>
+    <input type="input" name="lastname" placeholder="<?= $_SESSION['lastname']?>" class="input-setting"/>
 </label>
 </div>
     <input type="submit" hidden>
@@ -72,8 +72,8 @@
 <form class="form-forgotten-password" action="/script/script_change_password_logged.php" method="POST">
     <div class="form-row">
         <label>
-            <span>Change Password 🔒</span>
-  <input type="password" placeholder="New Password" name='password' required>
+            <span>Change Password 🔒 : </span>
+  <input type="password" placeholder="New Password" name='password' class="input-setting" required>
 </label>
 </div>
 </form>
