@@ -77,35 +77,87 @@ $nblastsquarefaces = count($dir_contenu) % 3;
 			<img class="logo" src="/img/icon/camera.svg">
 			<h1 class="name">My <span>Gallery</span></h1>
 		</header>
+        <div class="content clearfix">
 <?php
 
 foreach ($dir_contenu as $key => $value)
 {
+    $current_cube = NULL;
     $nbface = basename($value);
     $nbface = substr($nbface, 1, 1);
-    $cube_pics = glob($value . '/*');
-    
+    if ($handle = opendir($value))
+    {
+        while (false !== ($entry = readdir($handle)))
+        {
+            if ($entry != "." && $entry != "..")
+            {
+                $current_cube[] = $entry;
+            }
+        }
+        if ($nbface == 3)
+        {
+            echo'
+            			<div class="cube-container">
+            				<div class="photo-cube">
+
+            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+            					<div class="back photo-desc">
+            					  <h3>Earth from Space</h3>
+            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            						<a href="#" class="button">Like</a>
+                                    <a href="#" class="button">Comment</a>
+            					</div>
+            					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+            					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
+
+            				</div>
+            			</div>';
+        }
+        elseif ($nbface == 2)
+        {
+            echo'
+            			<div class="cube-container">
+            				<div class="photo-cube">
+
+            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+            					<div class="back photo-desc">
+            					  <h3>Earth from Space</h3>
+            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            						<a href="#" class="button">Like</a>
+                                    <a href="#" class="button">Comment</a>
+            					</div>
+            					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+            					<img class="right" src="" alt="">
+
+
+            			</div>
+                    </div>';
+        }
+        elseif ($nbface == 1)
+        {
+            echo'
+            			<div class="cube-container">
+            				<div class="photo-cube">
+
+            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+            					<div class="back photo-desc">
+            					  <h3>Earth from Space</h3>
+            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            						<a href="#" class="button">Like</a>
+                                    <a href="#" class="button">Comment</a>
+            					</div>
+            					<img class="left" src="" alt="">
+            					<img class="right" src="" alt="">
+
+
+            			</div>
+                    </div>';
+        }
+        closedir($handle);
+    }
 }
-
-echo'<div class="content clearfix">
-
-			<div class="cube-container">
-				<div class="photo-cube">
-
-					<img class="front"src="img/Demo/1.jpeg" alt="">
-					<div class="back photo-desc">
-					  <h3>Earth from Space</h3>
-					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-						<a href="#" class="button">Like</a>
-                        <a href="#" class="button">Comment</a>
-					</div>
-					<img class="left" src="img/Demo/2.jpeg" alt="">
-					<img class="right" src="img/Demo/3.jpeg" alt="">
-
-				</div>
-			</div>
-        </div>';
 ?>
+        </div>
     </div>
 </div>
 
