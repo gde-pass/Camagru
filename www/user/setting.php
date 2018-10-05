@@ -46,7 +46,6 @@
 
 <div class="main-content">
 <div class="form-forgotten-password">
-
     <div class="form-title-row">
         <h1>Edit your profile</h1>
     </div>

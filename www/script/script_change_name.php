@@ -11,9 +11,8 @@
 
   session_start();
 
-  echo($_POST['lastname']);
-
   if (!empty($_POST['firstname']) && isset($_POST['firstname']) && server_pattern_check($_POST['firstname'])) {
+    echo('first');
     $nickname = $_SESSION['nickname'];
     $firstname = $_POST['firstname'];
     #Connection to DB camagru
@@ -28,6 +27,7 @@
   }
 
   if (!empty($_POST['lastname']) && isset($_POST['lastname']) && server_pattern_check($_POST['lastname'])) {
+    echo("last");
     $lastname = $_POST['lastname'];
     $nickname = $_SESSION['nickname'];
     #Connection to DB camagru
