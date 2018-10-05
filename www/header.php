@@ -14,7 +14,7 @@ session_start();
     <link href="/style/msgbox.css" rel="stylesheet" type="text/css">
     <link href="/style/forgotten_password.css" rel="stylesheet" type="text/css">
     <link href="/style/profile_header.css" rel="stylesheet" type="text/css">
-
+    <link href="/style/setting.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
