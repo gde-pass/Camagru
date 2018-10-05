@@ -11,30 +11,36 @@
 
   session_start();
 
-  if (isset($_POST['firstname']) && server_pattern_check($_POST['firstname'])) {
+  echo($_POST['lastname']);
+
+  if (!empty($_POST['firstname']) && isset($_POST['firstname']) && server_pattern_check($_POST['firstname'])) {
     $nickname = $_SESSION['nickname'];
     $firstname = $_POST['firstname'];
     #Connection to DB camagru
     $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
     #set the PDO error mode to exception
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = $dbh->prepare("UPDATE `users` SET `firstname` = ? WHERE `users`.`email` = ?");
+    $sql = $dbh->prepare("UPDATE `users` SET `firstname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$firstname, $nickname]);
     $_SESSION['firstname'] = $_POST['firstname'];
+    header('Location: /user/setting.php?msg=uploaded');
+    exit();
   }
 
-  if (isset($_POST['lastname']) && server_pattern_check($_POST['lastname'])) {
+  if (!empty($_POST['lastname']) && isset($_POST['lastname']) && server_pattern_check($_POST['lastname'])) {
     $lastname = $_POST['lastname'];
     $nickname = $_SESSION['nickname'];
     #Connection to DB camagru
     $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
     #set the PDO error mode to exception
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $sql = $dbh->prepare("UPDATE `users` SET `lastname` = ? WHERE `users`.`email` = ?");
+    $sql = $dbh->prepare("UPDATE `users` SET `lastname` = ? WHERE `users`.`nickname` = ?");
     $sql->execute([$lastname, $nickname]);
     $_SESSION['lastname'] = $_POST['lastname'];
+    header('Location: /user/setting.php?msg=uploaded');
+    exit();
   }
-  header('Location: /user/setting.php');
+  header('Location: /user/setting.php?msg=empty');
   exit();
 
 ?>

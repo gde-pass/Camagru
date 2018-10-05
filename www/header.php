@@ -14,7 +14,7 @@ session_start();
     <link href="/style/msgbox.css" rel="stylesheet" type="text/css">
     <link href="/style/forgotten_password.css" rel="stylesheet" type="text/css">
     <link href="/style/profile_header.css" rel="stylesheet" type="text/css">
-    <link href="/style/setting.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
