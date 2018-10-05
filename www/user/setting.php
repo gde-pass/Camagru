@@ -41,18 +41,47 @@
         <input type="submit" name="Change" id="change" hidden>
       </form>
       <h1 class="heading"><?php echo $_SESSION['firstname'] . " " . $_SESSION['lastname']; ?></h1>
-      <form action="/script/script_change_password_logged.php" method="POST">
-        <input type="password" placeholder="New Password" name='password' required>
-      </form>
-      <form action="/script/script_change_name.php" method="POST">
-          <input type="input" name="firstname" placeholder="<?= $_SESSION['firstname']?>"/>
-        <br />
-        <input type="input" name="lastname" placeholder="<?= $_SESSION['lastname']?>"/>
-        <input type="submit" hidden>
-      </form>
     </div>
   </header>
 </section>
+
+<div class="main-content">
+<div class="form-forgotten-password">
+
+    <div class="form-title-row">
+        <h1>Edit your profile</h1>
+    </div>
+
+<form class="form-forgotten-password" action="/script/script_change_password_logged.php" method="POST">
+    <div class="form-row">
+        <label>
+            <span>Change Password</span>
+  <input type="password" placeholder="New Password" name='password' required>
+</label>
+</div>
+</form>
+
+<form class="form-register" action="/script/script_change_name.php" method="POST">
+    <div class="form-row">
+        <label>
+            <span>Change firstname</span>
+    <input type="input" name="firstname" placeholder="<?= $_SESSION['firstname']?>"/>
+</label>
+</div>
+<div class="form-row">
+    <label>
+        <span>Change lastname</span>
+    <input type="input" name="lastname" placeholder="<?= $_SESSION['lastname']?>"/>
+</label>
+</div>
+    <input type="submit" hidden>
+</form>
+</div>
+<BR />
+<form action="/script/script_delaccount.php" method="post">
+      <button type="submit" name="button" class="button" style="background-color:red">DELETE YOUR ACCOUNT</button>
+</form>
+</div>
 
 <script>
 
