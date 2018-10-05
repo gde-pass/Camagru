@@ -3,7 +3,6 @@ session_start();
 
 include '../header.php';
 include '../config/database.php';
-
 if ($_SESSION['logged'] == FALSE)
 {
     echo "
@@ -44,14 +43,10 @@ if (is_dir($dir_path) == FALSE)
 {
     mkdir($dir_path, 0777, true);
 }
-
-$dir_contenu = glob($dir_path . '/*.*');
+$dir_contenu = glob($dir_path . '/*');
 array_multisort(array_map('filemtime', $dir_contenu), SORT_NUMERIC, SORT_DESC, $dir_contenu);
-
 $nbsquare = round(count($dir_contenu) / 3);
 $nblastsquarefaces = count($dir_contenu) % 3;
-echo $nbsquare . "\n";
-echo $nblastsquarefaces;
 
 ?>
 
@@ -76,24 +71,44 @@ echo $nblastsquarefaces;
 </section>
 
 
+<div class="container">
+    <div class="container">
+		<header class="main-header clearfix">
+			<img class="logo" src="/img/icon/camera.svg">
+			<h1 class="name">My <span>Gallery</span></h1>
+		</header>
 <?php
-while ($i <= $nbsquare)
+
+foreach ($dir_contenu as $key => $value)
 {
-    if ($i == $nbsquare AND $nblastsquarefaces == 2)
-    {
-        echo "2 faces";
-        exit();
-    }
-    elseif ($i == $nbsquare AND $nblastsquarefaces == 1)
-    {
-        echo "1 face";
-        exit();
-    }
-    else
-    {
-        echo 'HEY';
-    }
-    $i++;
+    $nbface = basename($value);
+    $nbface = substr($nbface, 1, 1);
+    $cube_pics = glob($value . '/*');
+    
 }
+
+echo'<div class="content clearfix">
+
+			<div class="cube-container">
+				<div class="photo-cube">
+
+					<img class="front"src="img/Demo/1.jpeg" alt="">
+					<div class="back photo-desc">
+					  <h3>Earth from Space</h3>
+					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+						<a href="#" class="button">Like</a>
+                        <a href="#" class="button">Comment</a>
+					</div>
+					<img class="left" src="img/Demo/2.jpeg" alt="">
+					<img class="right" src="img/Demo/3.jpeg" alt="">
+
+				</div>
+			</div>
+        </div>';
+?>
+    </div>
+</div>
+
+<?php
 include '../footer.php';
 ?>
