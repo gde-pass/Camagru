@@ -2,14 +2,20 @@
 session_start();
 include '../config/database.php';
 
-function removeDirectory($path) {
- 	$files = glob($path . '/*');
-	foreach ($files as $file) {
-		is_dir($file) ? removeDirectory($file) : unlink($file);
-	}
-	rmdir($path);
- 	return;
-}
+function rrmdir($dir) {
+   if (is_dir($dir)) {
+     $objects = scandir($dir);
+     foreach ($objects as $object) {
+       if ($object != "." && $object != "..") {
+         if (is_dir($dir."/".$object))
+           rrmdir($dir."/".$object);
+         else
+           unlink($dir."/".$object);
+       }
+     }
+     rmdir($dir);
+   }
+ }
 
 if (isset($_SESSION) AND !empty($_SESSION))
 {
@@ -20,7 +26,7 @@ if (isset($_SESSION) AND !empty($_SESSION))
     $sql->execute([$_SESSION['email'], $_SESSION['nickname']]);
 
     #delete pictures of the users
-    removeDirectory("../data/" . $_SESSION['nickname']);
+    rrmdir("../data/" . $_SESSION['nickname']);
     # redirection
     header("location:logout.php");
 }
