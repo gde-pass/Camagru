@@ -46,6 +46,7 @@ p {
 .container,
 .content {
 	margin: auto;
+
 }
 .container {
 	width: 94.02985075%;
@@ -62,6 +63,7 @@ p {
 	text-align: center;
 	margin: 0 auto 4.5em;
     margin-top: 30px;
+	margin-right: 79px;
 }
 /* ---- Page Elements ---- */
 
@@ -118,16 +120,10 @@ p {
 @media (min-width: 769px) {
 	.cube-container {
 		float: left;
-		margin-left: 16.6%;
+		margin-left: 2.333%;
 	}
 }
 @media (min-width: 1300px) {
-	.cube-container:first-child {
-		margin-left: 0;
-	}
-	.cube-container:last-child{
-		float: right;
-	}
 	.content {
 		max-width: 900px;
 		margin: auto;
