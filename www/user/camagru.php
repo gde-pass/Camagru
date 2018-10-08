@@ -4,76 +4,52 @@ session_start();
 include '../header.php';
 ?>
 
-  <div class="camera">
-    <video id="video"></video>
-<button id="startbutton">Prendre une photo</button>
-<canvas id="canvas"></canvas>
-  </div>
-
+      <div class='form-title-row'>
+          <h1>New Picture</h1>
+          <div class="div-camera">
+            <video autoplay="true" id="video-camera" onclick="saveImg()"></video>
+            <div id="ifCamera">
+            </div>
+          </div>
+      </div>
 
   <script>
-  (function() {
 
-    var streaming = false,
-        video        = document.querySelector('#video'),
-        cover        = document.querySelector('#cover'),
-        canvas       = document.querySelector('#canvas'),
-        photo        = document.querySelector('#photo'),
-        startbutton  = document.querySelector('#startbutton'),
-        width = 320,
-        height = 0;
 
-    navigator.getMedia = ( navigator.getUserMedia ||
-                           navigator.webkitGetUserMedia ||
-                           navigator.mozGetUserMedia ||
-                           navigator.msGetUserMedia);
+  const video = document.getElementById("video-camera");
+  const canvas = document.getElementById('canvas')
+  const render = document.getElementById("render");
+  const photo = document.getElementById('photo');
+  const button = document.getElementById('save');
+  const ifCamera = document.getElementById('ifCamera');
+  const width = 1920;
+  const height = 0;
 
-    navigator.getMedia(
-      {
-        video: true,
-        audio: false
-      },
-      function(stream) {
-        if (navigator.mozGetUserMedia) {
-          video.mozSrcObject = stream;
-        } else {
-          var vendorURL = window.URL || window.webkitURL;
-          video.src = vendorURL.createObjectURL(stream);
-        }
-        video.play();
-      },
-      function(err) {
-        console.log("An error occured! " + err);
-      }
-    );
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({video: { width, height }})
+    .then(function(stream) {
+      video.srcObject = stream;
+      ifCamera.innerHtml = "<button id='save'>Click</button><canvas id='canvas'></canvas>"
+    })
+    .catch(function(err) {
+      console.log("Error : " + err);
+    });
+  }
+  else {
+    var vendorURL = window.URL || window.webkitURL;
+    video.srcObject = vendorURL.createObjectURL(stream);
+  }
 
-    video.addEventListener('canplay', function(ev){
-      if (!streaming) {
-        height = video.videoHeight / (video.videoWidth/width);
-        video.setAttribute('width', width);
-        video.setAttribute('height', height);
-        canvas.setAttribute('width', width);
-        canvas.setAttribute('height', height);
-        streaming = true;
-      }
-    }, false);
+  function saveImg() {
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+    photo.setAttribute('src', data);
+  }
 
-    function takepicture() {
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-      var data = canvas.toDataURL('image/png');
-      photo.setAttribute('src', data);
-    }
-
-    startbutton.addEventListener('click', function(ev){
-        takepicture();
-      ev.preventDefault();
-    }, false);
-
-  })();
   </script>
-<?php
 
+<?php
 include '../footer.php';
 ?>
