@@ -38,9 +38,22 @@ RUN echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' > /usr/l
 # -------------------------------
 
 
-
 #fix unknow ServerName warning
 RUN echo "ServerName 172.0.0.3:80" >> /etc/apache2/apache2.conf
+
+# ENABLE HTTPS WITH SELF-SIGNED SSL certificate
+# -------------------------------
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj "/C=FR/ST=IDF/O=42/OU=Project-Camagru/CN=192.168.99.100" -keyout /etc/ssl/private/apache-selfsigned.key -out /etc/ssl/certs/apache-selfsigned.crt
+
+COPY ./ssl/ssl-params.conf /etc/apache2/conf-available/ssl-params.conf
+COPY ./ssl/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+COPY ./ssl/000-default.conf /etc/apache2/sites-available/000-default.conf
+
+RUN a2enmod ssl
+RUN a2enmod headers
+RUN a2ensite default-ssl
+RUN a2enconf ssl-params
+RUN apache2ctl configtest
 
 # Workaround for write permission on write to MacOS X volumes
 # See https://github.com/boot2docker/boot2docker/pull/534

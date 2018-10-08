@@ -26,7 +26,7 @@ include '../header.php';
   const height = 0;
 
   if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({video: { width, height }})
+    navigator.mediaDevices.getUserMedia({video: true, audio: false})
     .then(function(stream) {
       video.srcObject = stream;
       ifCamera.innerHtml = "<button id='save'>Click</button><canvas id='canvas'></canvas>"
