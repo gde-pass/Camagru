@@ -30,10 +30,13 @@ include 'database.php';
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
+		$passord = hash('whirlpool', 'Password2');
+		$sql2 = $dbh->prepare("INSERT INTO `camagru` . `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `confirm`, `key`, `avatar`) VALUES (NULL, ?, ?, ?, ?, ?, 1, ?, ?)");
+		$sql2->execute(['Root', $passord, 'jeanbaptiste.blmd@gmail.com', 'JB', 'Blnd', 'xxx', 'aa']);
 	  }
 	catch(PDOException $e)
     {
-		echo $sql . "\n" . $e->getMessage();
+		echo "Error : " . $e->getMessage();
 	}
 	$dbh = NULL;
 ?>
