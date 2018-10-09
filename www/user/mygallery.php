@@ -1,12 +1,14 @@
 <?php
 session_start();
 
-include '../header.php';
-include '../config/database.php';
 if ($_SESSION['logged'] == FALSE) {
-    header('Location: /form/form_login.php?logged=no');
+    header('Location: ../form/form_login.php?logged=no');
     exit(0);
 }
+
+include '../header.php';
+include '../config/database.php';
+
 switch ($_GET['msg'])
 {
     case 'uploaded':
