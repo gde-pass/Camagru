@@ -10,28 +10,34 @@ include '../header.php';
 ?>
 
       <div class='form-title-row'>
-          <h1>New Picture</h1>
-          <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()"></video>
-          <canvas></canvas>
-          <button id="snap">Capture</button>
+        <h1>New Picture</h1>
       </div>
+        <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()"></video>
+        <div style="background-color:blue;filter: blur(10px)">
+          <canvas id="canvas0" onclick="selected(0, this)" style="width:320px;height:240px"></canvas>
+          <canvas id="canvas1" onclick="selected(1, this)" style="width:320px;height:240px"></canvas>
+          <canvas id="canvas2" onclick="selected(2, this)" style="width:320px;height:240px"></canvas>
+        </div>
 
   <script>
 
-
+  var nb = 0;
+  var selection = 0;
   const video = document.getElementById("video-camera");
-  const canvas = document.querySelector("canvas");
+  var canvas = document.getElementById("canvas" + nb);
   const context = canvas.getContext('2d');
-  var w = 0;
-  var h = 0;
+  var w = 640;
+  var h = 480;
 
   if ( navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
     .then(function(stream) {
       video.srcObject = stream;
+      console.log(video.offsetWidth);
     })
     .catch(function(err) {
       console.log("Error : " + err);
+      window.location.replace('/user/mygallery.php');
     });
   }
 
@@ -39,17 +45,24 @@ include '../header.php';
     var vendorURL = window.URL || window.webkitURL;
   }
 
-  function cameraChanged() {
-    w = video.videoWidth - 100;
-    console.log(w + ' - Width');
+  function selected(i, element) {
+    selection = i;
+    element.style = "border-style:dotted;width:320px;height:240px"
   }
 
   function saveImg() {
-    canvas.width = width;
-    canvas.height = height;
-    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
+    if (nb > 2) {
+      alert("maximum image");
+    }
+    else {
+      canvas.width = w;
+      canvas.height = h;
+      var context = canvas.getContext('2d');
+      context.fillRect(0, 0, w, h);
+      context.drawImage(video, 0, 0, w, h);
+      nb++;
+      canvas = document.getElementById("canvas" + nb);
+    }
   }
 
   </script>
