@@ -1,6 +1,5 @@
 <?php
 include 'database.php';
-	$avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));
 	try
     {
 		#Connection to DB camagru
@@ -30,9 +29,15 @@ include 'database.php';
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
-		$passord = hash('whirlpool', 'Password2');
-		$sql2 = $dbh->prepare("INSERT INTO `camagru` . `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `confirm`, `key`, `avatar`) VALUES (NULL, ?, ?, ?, ?, ?, 1, NULL, ?)");
-		$sql2->execute(['Root', $passord, 'jeanbaptiste.blmd@gmail.com', 'JB', 'Blnd', $avatar]);
+
+		#create default user
+		$avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));
+		$passord = hash('whirlpool', 'Root123');
+		$key = md5(microtime(TRUE)*100000);
+
+		$sql2 = $dbh->prepare("INSERT INTO `camagru` . `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `confirm`, `key`, `avatar`) VALUES (NULL, ?, ?, ?, ?, ?, 1, ?, ?)");
+		$sql2->execute(['Root', $passord, 'root@gmail.com', 'Root', 'Root', $key, $avatar]);
+		echo "\e[36mDefault user created\e[0m\n";
 	  }
 	catch(PDOException $e)
     {

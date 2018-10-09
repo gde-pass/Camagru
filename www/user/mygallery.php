@@ -1,12 +1,13 @@
 <?php
 session_start();
 
-include '../header.php';
-include '../config/database.php';
 if ($_SESSION['logged'] == FALSE) {
-    header('Location: /form/form_login.php?logged=no');
+    header('Location: ../form/form_login.php?logged=no');
     exit(0);
 }
+include '../header.php';
+include '../config/database.php';
+
 switch ($_GET['msg'])
 {
     case 'uploaded':
@@ -123,7 +124,7 @@ foreach ($dir_contenu as $key => $value)
                                     <a href="#" class="button">Comment</a>
             					</div>
             					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
-            					<img class="right" src="" alt="">
+            					<img class="right" src="../img/cube/test.jpg" alt="">
 
 
             			</div>
@@ -142,8 +143,8 @@ foreach ($dir_contenu as $key => $value)
             						<a href="#" class="button">Like</a>
                                     <a href="#" class="button">Comment</a>
             					</div>
-            					<img class="left" src="" alt="">
-            					<img class="right" src="" alt="">
+            					<img class="left" src="../img/cube/test.jpg" alt="">
+            					<img class="right" src="../img/cube/test.jpg" alt="">
 
 
             			</div>
