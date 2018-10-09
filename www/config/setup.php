@@ -1,6 +1,6 @@
 <?php
 include 'database.php';
-
+	$avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));
 	try
     {
 		#Connection to DB camagru
@@ -31,8 +31,8 @@ include 'database.php';
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
 		$passord = hash('whirlpool', 'Password2');
-		$sql2 = $dbh->prepare("INSERT INTO `camagru` . `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `confirm`, `key`, `avatar`) VALUES (NULL, ?, ?, ?, ?, ?, 1, ?, ?)");
-		$sql2->execute(['Root', $passord, 'jeanbaptiste.blmd@gmail.com', 'JB', 'Blnd', 'xxx', 'aa']);
+		$sql2 = $dbh->prepare("INSERT INTO `camagru` . `users` (`id`, `nickname`, `password`, `email`, `firstname`, `lastname`, `confirm`, `key`, `avatar`) VALUES (NULL, ?, ?, ?, ?, ?, 1, NULL, ?)");
+		$sql2->execute(['Root', $passord, 'jeanbaptiste.blmd@gmail.com', 'JB', 'Blnd', $avatar]);
 	  }
 	catch(PDOException $e)
     {
