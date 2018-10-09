@@ -5,6 +5,7 @@ if ($_SESSION['logged'] == FALSE) {
     header('Location: ../form/form_login.php?logged=no');
     exit(0);
 }
+
 include '../header.php';
 include '../config/database.php';
 
