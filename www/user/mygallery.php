@@ -3,12 +3,8 @@ session_start();
 
 include '../header.php';
 include '../config/database.php';
-if ($_SESSION['logged'] == FALSE)
-{
-    echo "
-        <script language='JavaScript' type='text/javascript'>
-            window.location.replace('../form/form_login.php?logged=no');
-        </script>";
+if ($_SESSION['logged'] == FALSE) {
+    header('Location: /form/form_login.php?logged=no');
     exit(0);
 }
 switch ($_GET['msg'])
