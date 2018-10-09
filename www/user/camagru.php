@@ -12,11 +12,11 @@ include '../header.php';
       <div class='form-title-row'>
         <h1>New Picture</h1>
       </div>
-        <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()"></video>
-        <div style="background-color:blue;filter: blur(10px)">
-          <canvas id="canvas0" onclick="selected(0, this)" style="width:320px;height:240px"></canvas>
-          <canvas id="canvas1" onclick="selected(1, this)" style="width:320px;height:240px"></canvas>
-          <canvas id="canvas2" onclick="selected(2, this)" style="width:320px;height:240px"></canvas>
+        <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()" style="margin-left: 10px"></video>
+        <div class="container-images">
+          <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas"></canvas>
+          <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas"></canvas>
+          <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas"></canvas>
         </div>
 
   <script>
@@ -46,8 +46,14 @@ include '../header.php';
   }
 
   function selected(i, element) {
+    let tmp = 0;
     selection = i;
-    element.style = "border-style:dotted;width:320px;height:240px"
+    element.style = "border-style:dotted";
+    while (tmp <= nb) {
+      if (tmp != i)
+        element.style = "";
+      tmp++;
+    }
   }
 
   function saveImg() {

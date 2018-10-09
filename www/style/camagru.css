@@ -1,0 +1,14 @@
+.camagru-canvas {
+  width:320px;
+  height:240px
+}
+
+.container-images {
+  background-color:blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  top: 80px;
+  right: 0px;
+}
