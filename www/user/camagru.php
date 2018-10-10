@@ -12,11 +12,30 @@ include '../header.php';
       <div class='form-title-row'>
         <h1>New Picture</h1>
       </div>
-        <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()" style="margin-left: 10px"></video>
+        <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()"></video>
         <div class="container-images">
-          <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas"></canvas>
-          <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas"></canvas>
-          <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas"></canvas>
+          <input type="radio" id="canva0" name="canva" >
+            <label for="canva0">
+              <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas"></canvas>
+            </label>
+          <input type="radio" id="canva1" name="canva" >
+            <label for="canva1">
+              <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas"></canvas>
+            </label>
+          <input type="radio" id="canva2" name="canva" >
+            <label for="canva2">
+              <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas"></canvas>
+            </label>
+        </div>
+        <div class="container-filtres">
+          <input type="radio" name="filtres" id="filtre0">
+          <label for="filtre0">
+            <img src="/img/filtre/star.png" alt="" title="">
+          </label>
+          <input type="radio" name="filtres" id="filtre1">
+          <label for="filtre1">
+            <img src="/img/filtre/circular.png" alt="" title="">
+          </label>
         </div>
 
   <script>
@@ -48,12 +67,6 @@ include '../header.php';
   function selected(i, element) {
     let tmp = 0;
     selection = i;
-    element.style = "border-style:dotted";
-    while (tmp <= nb) {
-      if (tmp != i)
-        element.style = "";
-      tmp++;
-    }
   }
 
   function saveImg() {

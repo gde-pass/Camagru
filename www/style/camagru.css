@@ -3,6 +3,10 @@
   height:240px
 }
 
+#video-camera {
+  margin-left: 10px; margin-top: 40px; margin-bottom: 40px
+}
+
 .container-images {
   background-color:blue;
   display: flex;
@@ -11,4 +15,22 @@
   position: fixed;
   top: 80px;
   right: 0px;
+}
+
+.container-images input:checked {
+  border-style: dashed;
+}
+
+.container-images input:not(:checked) {
+  border-style: inset;
+}
+
+.container-filtres {
+  background-color: red;
+  overflow: scroll;
+}
+
+.container-filtres img {
+  height: 240px;
+  height:320px;
 }

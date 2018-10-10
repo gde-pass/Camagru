@@ -1,3 +1,4 @@
 <?php
-  if ($_GET[])
+  $i = 0;
+  if ($_POST["image"])
 ?>
