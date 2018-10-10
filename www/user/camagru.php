@@ -14,25 +14,29 @@ include '../header.php';
       </div>
         <video autoplay="true" id="video-camera" onChange="cameraChanged()" onclick="saveImg()"></video>
         <div class="container-images">
-          <input type="radio" id="canva0" name="canva" >
+          <input type="radio" id="canva0" name="canva" hidden>
             <label for="canva0">
               <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas"></canvas>
             </label>
-          <input type="radio" id="canva1" name="canva" >
+          <input type="radio" id="canva1" name="canva" hidden>
             <label for="canva1">
               <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas"></canvas>
             </label>
-          <input type="radio" id="canva2" name="canva" >
+          <input type="radio" id="canva2" name="canva" hidden>
             <label for="canva2">
               <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas"></canvas>
             </label>
         </div>
+        <input type="checkbox" id="addFilter" name="Filtre" style="position:fixed;left:0px">
+        <label for="addFilter">
+          Add filter
+        </label>
         <div class="container-filtres">
-          <input type="radio" name="filtres" id="filtre0">
+          <input type="radio" name="filtres" id="filtre0" hidden>
           <label for="filtre0">
             <img src="/img/filtre/star.png" alt="" title="">
           </label>
-          <input type="radio" name="filtres" id="filtre1">
+          <input type="radio" name="filtres" id="filtre1" hidden>
           <label for="filtre1">
             <img src="/img/filtre/circular.png" alt="" title="">
           </label>
@@ -41,14 +45,34 @@ include '../header.php';
   <script>
 
   var nb = 0;
-  var selection = 0;
+  let selection = 0;
   const video = document.getElementById("video-camera");
   var canvas = document.getElementById("canvas" + nb);
   const context = canvas.getContext('2d');
   var w = 640;
   var h = 480;
 
-  if ( navigator.mediaDevices.getUserMedia) {
+  function selected(i, element) {
+    if (i < nb)
+      selection = i;
+    console.log(selection);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
     .then(function(stream) {
       video.srcObject = stream;
@@ -62,11 +86,6 @@ include '../header.php';
 
   else {
     var vendorURL = window.URL || window.webkitURL;
-  }
-
-  function selected(i, element) {
-    let tmp = 0;
-    selection = i;
   }
 
   function saveImg() {

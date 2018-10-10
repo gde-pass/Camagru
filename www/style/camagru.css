@@ -17,14 +17,6 @@
   right: 0px;
 }
 
-.container-images input:checked {
-  border-style: dashed;
-}
-
-.container-images input:not(:checked) {
-  border-style: inset;
-}
-
 .container-filtres {
   background-color: red;
   overflow: scroll;
@@ -33,4 +25,13 @@
 .container-filtres img {
   height: 240px;
   height:320px;
+}
+
+.container-images canvas{
+  border-style: dotted;
+}
+
+input[type="radio"]:checked+label {
+  border-width: 2px;
+  border-style: double;
 }
