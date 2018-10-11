@@ -15,20 +15,23 @@
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: absolute;
+  width: 325px;
   top: 80px;
   right: 0px;
 }
 
 .container-filtres {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   background-color: red;
-  overflow: scroll;
+  margin: 0;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  overflow-x: auto;
 }
 
 .container-filtres img {
+  flex: 1;
   height: 240px;
   height:320px;
 }
@@ -41,4 +44,9 @@ input[type="radio"]:checked+label {
   border-width: 2px;
   border-style: double;
   border-radius: 25px;
+}
+
+textarea[name="comment"] {
+  width: 500px;
+  height: 80px;
 }
