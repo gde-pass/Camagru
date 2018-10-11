@@ -16,21 +16,17 @@ include '../header.php';
         <div class="container-images">
           <input type="radio" id="canva0" name="canva" hidden>
             <label for="canva0">
-              <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas"></canvas>
+              <canvas id="canvas0" onclick="selected(0, this)" class="camagru-canvas" style="visibility:hidden"></canvas>
             </label>
           <input type="radio" id="canva1" name="canva" hidden>
             <label for="canva1">
-              <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas"></canvas>
+              <canvas id="canvas1" onclick="selected(1, this)" class="camagru-canvas" style="visibility:hidden"></canvas>
             </label>
           <input type="radio" id="canva2" name="canva" hidden>
             <label for="canva2">
-              <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas"></canvas>
+              <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas" style="visibility:hidden"></canvas>
             </label>
         </div>
-        <input type="checkbox" id="addFilter" name="Filtre" style="position:fixed;left:0px">
-        <label for="addFilter">
-          Add filter
-        </label>
         <div class="container-filtres">
           <input type="radio" name="filtres" id="filtre0" hidden>
           <label for="filtre0">
@@ -40,7 +36,16 @@ include '../header.php';
           <label for="filtre1">
             <img src="/img/filtre/circular.png" alt="" title="">
           </label>
+          <input type="radio" name="filtres" id="filtre2" hidden>
+          <label for="filtre2">
+            <img src="/img/filtre/smoke.png" alt="" title="">
+          </label>
+          <input type="radio" name="filtres" id="filtre3" hidden>
+          <label for="filtre3">
+            <img src="/img/filtre/flower.png" alt="" title="">
+          </label>
         </div>
+        <button onClick="send()">Send</button>
 
   <script>
 
@@ -49,6 +54,7 @@ include '../header.php';
   const video = document.getElementById("video-camera");
   var canvas = document.getElementById("canvas" + nb);
   const context = canvas.getContext('2d');
+  const f = ["", "", ""];
   var w = 640;
   var h = 480;
 
@@ -69,7 +75,24 @@ include '../header.php';
 
 
 
-
+  function send() {
+    let i = 0;
+    let res = "<?= $_SESSION['nickname']?>\n";
+    if (nb === 0){
+      alert("An error Occured");
+      return ;
+    }
+    while(i < nb) {
+      const canvatmp = document.getElementById("canvas" + i);
+      if (!canvatmp) {
+        alert("An error Occured");
+        return ;
+      }
+      res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i] + '\n';
+      i++;
+    }
+    console.log(res);
+  }
 
 
   if (navigator.mediaDevices.getUserMedia) {
@@ -98,6 +121,10 @@ include '../header.php';
       var context = canvas.getContext('2d');
       context.fillRect(0, 0, w, h);
       context.drawImage(video, 0, 0, w, h);
+      context.globalAlpha = 0.5;
+      img = document.getElementById("f0");
+      context.drawImage = (img, 0, 0, w, h);
+      canvas.style.visibility = "visible";
       nb++;
       canvas = document.getElementById("canvas" + nb);
     }
