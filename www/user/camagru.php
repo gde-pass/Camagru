@@ -97,7 +97,15 @@ include '../header.php';
       res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i] + '\n';
       i++;
     }
-    console.log(res);
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', '/script/script_merge_image.php', false);
+    xhr.send(res);
+    if (xhr.status === 200) {
+      console.log('OK - send');
+    }
+    else {
+      console.log('Error - ' + req.status + ' -> ' xhr.statusText); 
+    }
   }
 
 

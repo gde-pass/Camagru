@@ -5,24 +5,26 @@
 }
 
 #video-camera {
+  display: block;
   margin-left: 10px;
-  margin-top: 40px;
-  margin-bottom: 40px
+  margin-top: 50px;
+  margin-bottom: 70px;
 }
 
+
 .container-images {
-  background-color:blue;
-  border-radius: 25px;
+  background-color: 234, 234, 234;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   position: absolute;
   width: 325px;
   top: 80px;
-  right: 0px;
+  right: 5px;
 }
 
 .container-filtres {
-  background-color: red;
+  background-color: 41, 44, 47;
   margin: 0;
   display: flex;
   justify-content: left;
@@ -37,13 +39,14 @@
 }
 
 .container-images canvas{
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 input[type="radio"]:checked+label {
-  border-width: 2px;
-  border-style: double;
-  border-radius: 25px;
+  opacity: 0.8;
+  border-color: lightgrey;
+  border-style: outset;
+  border-radius: 5px;
 }
 
 textarea[name="comment"] {
