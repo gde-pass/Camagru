@@ -1,3 +1,6 @@
+<div class="proper">
+
+</div>
 <footer class="footer-distributed">
 
     <div class="footer-left">

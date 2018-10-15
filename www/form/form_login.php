@@ -82,7 +82,7 @@ if (isset($_GET['logged']) AND !empty($_GET['logged']))
 
             <a href="#" class="form-google-button">Google</a>
             <a href="#" class="form-facebook-button">Facebook</a>
-            <a href="#" class="form-twitter-button">Twitter</a>
+            <a href="../twitter/index.php" class="form-twitter-button">Twitter</a>
 
         </div>
 

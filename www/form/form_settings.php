@@ -1,13 +1,13 @@
 <?php
 session_start();
-
-include '../header.php';
-include '../config/database.php';
-if ($_SESSION['logged'] == FALSE)
+if ($_SESSION['logged'] == FALSE || $_SESSION['twitter'] == "TRUE")
 {
   header('Location: ../form/form_login.php?logged=no');
   exit(0);
 }
+include '../header.php';
+include '../config/database.php';
+
 
 switch ($_GET['msg'])
 {

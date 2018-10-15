@@ -45,16 +45,28 @@ session_start();
         }
         else
         {
+            if ($_SESSION['twitter'] == "TRUE")
+            {
+                echo"
+                <div class='header-user-menu'>
+                    <img src='data:image/png;base64,".$_SESSION['avatar']."' alt='User Image'/>
+                    <ul>
+                        <li><a href='/script/logout.php' class='highlight'>Logout</a></li>
+                    </ul>
+                </div>";
+            }
+            else
+            {
             echo"
             <div class='header-user-menu'>
                 <img src='data:image/png;base64,".$_SESSION['avatar']."' alt='User Image'/>
 
                 <ul>
                     <li><a href='/form/form_settings.php'>Settings</a></li>
-
                     <li><a href='/script/logout.php' class='highlight'>Logout</a></li>
                 </ul>
             </div>";
+            }
         }
         ?>
 
