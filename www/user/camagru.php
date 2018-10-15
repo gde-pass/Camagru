@@ -27,7 +27,8 @@ include '../header.php';
               <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas" style="visibility:hidden"></canvas>
             </label>
         </div>
-        <form class="container-filtres">
+        <div id="filtres-hidden" name="filtre-hidden">0,0,0</div>
+        <div class="container-filtres">
           <input type="radio" name="filtres" id="filtre0" value="0" onclick="applyFiltre(this)" hidden>
           <label for="filtre0">
             <img src="/img/filtre/empty.png" alt="" title="">
@@ -48,10 +49,9 @@ include '../header.php';
           <label for="filtre4">
             <img src="/img/filtre/flower.png" alt="" title="">
           </label>
-        </form>
+        </div>
         <textarea name="comment"></textarea>
         <button onClick="send()">Send</button>
-
   <script>
 
   var nb = 0;
@@ -70,8 +70,8 @@ include '../header.php';
       selection = i;
     else
       return ;
-    console.log(selection);
     document.getElementById("filtre" + f[i]).checked = true;
+    document.getElementById("filtres-hidden").innerHTML = f.toString();
   }
 
   function applyFiltre(element) {
@@ -79,6 +79,7 @@ include '../header.php';
     if (nb === 0)
       return ;
     f[selection] = element.value;
+    document.getElementById("filtres-hidden").innerHTML = f.toString();
   }
 
   function send() {
@@ -99,12 +100,13 @@ include '../header.php';
     }
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/script/script_merge_image.php', false);
-    xhr.send(res);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('?req=' + res);
     if (xhr.status === 200) {
-      console.log('OK - send');
+      console.log('OK - ' + xhr.responseText.toString());
     }
     else {
-      console.log('Error - ' + req.status + ' -> ' xhr.statusText); 
+      console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText);
     }
   }
 
@@ -113,7 +115,6 @@ include '../header.php';
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
     .then(function(stream) {
       video.srcObject = stream;
-      console.log(video.offsetWidth);
     })
     .catch(function(err) {
       console.log("Error : " + err);
@@ -139,6 +140,9 @@ include '../header.php';
       let img = document.getElementById("f1");
       context.drawImage = (img, 0, 0, w, h);
       canvas.style.visibility = "visible";
+      document.getElementById("filtre" + f[nb]).checked = true;
+      document.getElementById("canvas" + nb).checked = true;
+      document.getElementById("filtres-hidden").innerHTML = f.toString();
       nb++;
       canvas = document.getElementById("canvas" + nb);
     }
