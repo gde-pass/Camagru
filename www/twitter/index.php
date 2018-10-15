@@ -28,6 +28,5 @@ else
     $_SESSION['avatar'] = base64_encode(file_get_contents($user->profile_image_url_https));
     $_SESSION['twitter'] = "TRUE";
     header('Location: ../index.php');
-
 }
 ?>

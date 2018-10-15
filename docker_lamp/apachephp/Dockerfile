@@ -7,11 +7,14 @@ ENV DEBCONF_FRONTEND non-interactive
 RUN a2enmod rewrite
 
 # Sendmail by mailutils
-RUN apt-get update && apt-get install -q -y ssmtp mailutils libpng-dev && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -q -y ssmtp mailutils libpng-dev libfreetype6-dev libjpeg62-turbo-dev && rm -rf /var/lib/apt/lists/*
 
 # FOR USE GMAIL SMTP
 # -------------------------------
 # RUN docker-php-ext-install pdo_mysql
+# RUN docker-php-ext-install -j$(nproc) iconv
+# RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+# RUN docker-php-ext-install -j$(nproc) gd
 # RUN echo "root=project.camagru.42@gmail.com" >> /etc/ssmtp/ssmtp.conf
 # RUN echo "mailhub=smtp.gmail.com:587" >> /etc/ssmtp/ssmtp.conf
 # RUN echo "AuthUser=project.camagru.42@gmail.com" >> /etc/ssmtp/ssmtp.conf
@@ -30,6 +33,9 @@ RUN apt-get update &&\
     apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
     rm -rf /var/lib/apt/lists/*
 RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install -j$(nproc) iconv
+RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-install -j$(nproc) gd
 RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
 ENV PATH /usr/local/go/bin:$PATH
 RUN go get github.com/mailhog/mhsendmail
