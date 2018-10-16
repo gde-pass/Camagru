@@ -27,7 +27,6 @@ include '../header.php';
               <canvas id="canvas2" onclick="selected(2, this)" class="camagru-canvas" style="visibility:hidden"></canvas>
             </label>
         </div>
-        <div id="filtres-hidden" name="filtre-hidden">0,0,0</div>
         <div class="container-filtres">
           <input type="radio" name="filtres" id="filtre0" value="0" onclick="applyFiltre(this)" hidden>
           <label for="filtre0">
@@ -52,6 +51,7 @@ include '../header.php';
         </div>
         <textarea name="comment"></textarea>
         <button onClick="send()">Send</button>
+        <div id="render"></div>
   <script>
 
   var nb = 0;
@@ -71,7 +71,6 @@ include '../header.php';
     else
       return ;
     document.getElementById("filtre" + f[i]).checked = true;
-    document.getElementById("filtres-hidden").innerHTML = f.toString();
   }
 
   function applyFiltre(element) {
@@ -79,13 +78,12 @@ include '../header.php';
     if (nb === 0)
       return ;
     f[selection] = element.value;
-    document.getElementById("filtres-hidden").innerHTML = f.toString();
   }
 
   function send() {
     let i = 0;
-    let res = "<?= $_SESSION['nickname']?>\n";
-    if (nb === 0){
+    let res = "";
+    if (nb === 0 || nb > 3){
       alert("An error Occured");
       return ;
     }
@@ -101,12 +99,14 @@ include '../header.php';
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/script/script_merge_image.php', false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('?req=' + res);
+    xhr.send('req=' + res);
     if (xhr.status === 200) {
       console.log('OK - ' + xhr.responseText.toString());
+      let render = document.getElementById("render");
+      render.innerHTML = "<img alt='' title='' src='data:image/png;base64," + xhr.responseText + "' >";
     }
     else {
-      console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText);
+      console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText + '->' + xhr.responseText.toString());
     }
   }
 
@@ -142,7 +142,6 @@ include '../header.php';
       canvas.style.visibility = "visible";
       document.getElementById("filtre" + f[nb]).checked = true;
       document.getElementById("canvas" + nb).checked = true;
-      document.getElementById("filtres-hidden").innerHTML = f.toString();
       nb++;
       canvas = document.getElementById("canvas" + nb);
     }
