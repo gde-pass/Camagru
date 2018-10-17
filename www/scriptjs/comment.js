@@ -1,3 +1,8 @@
 function comment(element) {
-  console.log(element.id);
+  if (!element.id)
+    return ;
+  const req = element.id.split('/');
+  if(req.length != 3)
+    return ;
+  
 }

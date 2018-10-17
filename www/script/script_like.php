@@ -1,5 +1,6 @@
 <?php
   session_start();
+  include '../config/database.php';
 
   #Connection to DB camagru
   $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
@@ -13,13 +14,13 @@
 
   //Envoyer en post le dossier a liker stocker en id
 
-  if ($_POST['id']) {
-    $sqlselect = dbh->prepare("SELECT * FROM `like` WHERE `nickname`= ?");
-    $sqlselect->execute([$_POST['nickname']]);
+  if ($_POST['nickname'] && $_POST['img']) {
+    $sqlselect = $dbh->prepare("SELECT * FROM `like` WHERE `nicker`= ?");
+    $sqlselect->execute($_SESSION['nickname']);
     if ($sql) {
       return http_response_code(401);
     }
-    $sql = dbh->prepare("INSERT INTO `like` (`id`, `nickname`, `nicker`, `cube`) VALUES (NULL, ?, ?, ?)");
-    //$sql->execute([])
+    $sql = $dbh->prepare("INSERT INTO `like` (`nickname`, `nicker`, `cube`) VALUES (?, ?, ?)");
+    $sql->execute([$_POST['nickname'], $_SESSION['nickname'], $_POST['img']]);
   }
 ?>
