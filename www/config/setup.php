@@ -30,6 +30,22 @@ include 'database.php';
 		$dbh->exec($sql);
 		echo "\e[36mUsers table is created\e[0m\n";
 
+		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`comment`
+		( `id` INT NOT NULL AUTO_INCREMENT ,
+		`nickname` VARCHAR(30) NOT NULL ,
+		`comment` TEXT NULL DEFAULT NULL ,
+		PRIMARY KEY (`id`))
+		ENGINE = InnoDB";
+		$dbh->exec($sql);
+		echo "\e[36mComment table is created\e[0m\n";
+
+		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`like`
+		( `nickname` VARCHAR(30) NOT NULL ,
+		`nicker` VARCHAR(30) NOT NULL ,
+		`cube` VARCHAR(35) NOT NULL )
+		ENGINE = InnoDB";
+		echo "\e[36mLike table is created\e[0m\n";
+
 		#create default user
 		$avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));
 		$passord = hash('whirlpool', 'Root123');
