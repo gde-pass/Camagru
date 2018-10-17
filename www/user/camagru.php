@@ -49,7 +49,7 @@ include '../header.php';
             <img src="/img/filtre/flower.png" alt="" title="">
           </label>
         </div>
-        <textarea name="comment"></textarea>
+        <textarea id="comment"></textarea>
         <button onClick="send()">Send</button>
   <script>
 
@@ -73,7 +73,6 @@ include '../header.php';
   }
 
   function applyFiltre(element) {
-    console.log(element.value);
     if (nb === 0)
       return ;
     f[selection] = element.value;
@@ -87,19 +86,21 @@ include '../header.php';
       return ;
     }
     while(i < nb) {
+      if (i > 0)
+        res += '#';
       const canvatmp = document.getElementById("canvas" + i);
       if (!canvatmp) {
         alert("An error Occured");
         return ;
       }
-      res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i] + '#';
+      res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i];
       i++;
     }
-    console.log(res);
+    const comment = '&comment=' + document.getElementById('comment').value;
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/script/script_merge_image.php', false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('req=' + res);
+    xhr.send('req=' + res + comment);
     if (xhr.status === 200) {
       console.log('OK - ' + xhr.responseText.toString());
     }

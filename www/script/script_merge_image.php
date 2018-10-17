@@ -8,19 +8,20 @@
 
   // GLOBALS
 
-
   $filtre = array("empty.png", "star.png", "circular.png", "smoke.png", "flower.png");
   $nbFiltre = count($filtre);
-  //$folder =
-
   $imgs = explode('#', $_POST['req']);
   $arr = array();
-  echo count($imgs);
+  $nb = count($imgs);
+  if ($nb > 3) {
+    echo "so much imgs";
+    return http_response_code(400);
+  }
+  $folder = "[$nb]" .  md5(microtime(TRUE)*100000);
+  $pathfolder = '../data/' . $_SESSION['nickname'] . '/' . $folder;
+  if (is_dir($pathfolder) == FALSE)
+      mkdir($pathfolder, 0777, true);
   foreach($imgs as $key => $value) {
-    if ($key > 3) {
-      echo "so much imgs";
-      return http_response_code(400);
-    }
     $xplode  = explode(',', $value);
     if (!$xplode || !$xplode[1]) {
       echo "malformed" . $value;
@@ -35,13 +36,13 @@
       return http_response_code(400);
     }
     $src = imagecreatefrompng('../img/filtre/' . $filtre[$i]);
-    imagecopymerge($dst, $src, 0, 0, 0, 0, 6400, 480, 35);
-    $path = "../data/" . $_SESSION['nickname'] . '/' . uniqid() . $key . '.png';
-    echo $path;
+    imagecopymerge($dst, $src, 0, 0, 0, 0, 640, 480, 35);
+    $path = $pathfolder . '/' . uniqid() . '.png';
     $final = imagepng($dst, $path);
     imagedestroy($src);
     imagedestroy($dst);
   }
-  //file_put_contents('../img/tmp/0.png', $imgs[0]);
-  //echo($imgs[0]);
+  if ($_POST['comment']) {
+    file_put_contents($pathfolder . '/comment', $_POST['comment']);
+  }
 ?>
