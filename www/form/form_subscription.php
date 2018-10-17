@@ -17,6 +17,8 @@ if ($_SESSION['logged'] == TRUE)
         </script>";
     exit(0);
 }
+require_once "../google/config.php";
+$loginURL = $gClient->createAuthUrl();
 ?>
 
 <div class="main-content">
@@ -89,7 +91,7 @@ if ($_SESSION['logged'] == TRUE)
                 <span class="form-title">Sign in with</span>
             </div>
 
-            <a href="#" class="form-google-button">Google</a>
+            <a href="<?= $loginURL ?>" class="form-google-button">Google</a>
             <a href="#" class="form-facebook-button">Facebook</a>
             <a href="../twitter/index.php" class="form-twitter-button">Twitter</a>
 
