@@ -51,7 +51,6 @@ include '../header.php';
         </div>
         <textarea name="comment"></textarea>
         <button onClick="send()">Send</button>
-        <div id="render"></div>
   <script>
 
   var nb = 0;
@@ -93,17 +92,16 @@ include '../header.php';
         alert("An error Occured");
         return ;
       }
-      res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i] + '\n';
+      res +=  canvatmp.toDataURL('image/png', 1) + "," + f[i] + '#';
       i++;
     }
+    console.log(res);
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/script/script_merge_image.php', false);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send('req=' + res);
     if (xhr.status === 200) {
       console.log('OK - ' + xhr.responseText.toString());
-      let render = document.getElementById("render");
-      render.innerHTML = "<img alt='' title='' src='data:image/png;base64," + xhr.responseText + "' >";
     }
     else {
       console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText + '->' + xhr.responseText.toString());
