@@ -64,7 +64,7 @@ RUN apache2ctl configtest
 # Workaround for write permission on write to MacOS X volumes
 # See https://github.com/boot2docker/boot2docker/pull/534
 RUN usermod -u 1000 www-data
-
+#RUN chmod 777 /var/www/
 # Disable cache for PHP
 RUN ( \
   echo "opcache.memory_consumption=128"; \

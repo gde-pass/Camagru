@@ -19,74 +19,105 @@ if (isset($_GET['subscribe']) AND !empty($_GET['subscribe']))
 		</header>
 		<div class="content clearfix">
 
-			<div class="cube-container">
-				<div class="photo-cube">
+<?php
 
-					<img class="front"src="img/Demo/1.jpeg" alt="">
-					<div class="back photo-desc">
-					  <h3>Earth from Space</h3>
-					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-						<a href="#" class="button">Like</a>
-                        <a href="#" class="button">Comment</a>
-					</div>
-					<img class="left" src="img/Demo/2.jpeg" alt="">
-					<img class="right" src="img/Demo/3.jpeg" alt="">
+$data_path = "data";
+if (is_dir($data_path) == FALSE)
+    mkdir($data_path, 0777, true);
+$data_contenu = glob($data_path . '/*');
+array_multisort(array_map('filemtime', $data_contenu), SORT_NUMERIC, SORT_DESC, $data_contenu);
 
-				</div>
-			</div>
+foreach ($data_contenu as $key => $value)
+{
+    $dir_path = $value;
+    $dir_contenu = glob($dir_path . '/*');
+    array_multisort(array_map('filemtime', $dir_contenu), SORT_NUMERIC, SORT_DESC, $dir_contenu);
+    $nbsquare = round(count($dir_contenu) / 3);
+    $nblastsquarefaces = count($dir_contenu) % 3;
 
-			<div class="cube-container">
-				<div class="photo-cube">
+    foreach ($dir_contenu as $key => $value)
+    {
+        $current_cube = NULL;
+        $nbface = basename($value);
+        $nbface = substr($nbface, 1, 1);
+        if ($handle = opendir($value))
+        {
+            while (false !== ($entry = readdir($handle)))
+            {
+                if ($entry != "." && $entry != "..")
+                {
+                    $current_cube[] = $entry;
+                }
+            }
+            if ($nbface == 3)
+            {
+                echo'
+                			<div class="cube-container">
+                				<div class="photo-cube">
 
-					<img class="front" src="img/Demo/4.jpeg" alt="">
-					<div class="back photo-desc">
-					  <h3>Space Images</h3>
-					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        <a href="#" class="button">Like</a>
-                        <a href="#" class="button">Comment</a>
-					</div>
-					<img class="left" src="img/Demo/5.jpg" alt="">
-					<img class="right" src="img/Demo/6.jpeg" alt="">
+                					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+                					<div class="back photo-desc">
+                					  <h3>Earth from Space</h3>
+                					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                						<a href="#" class="button" id='.$value.'>Like</a>
+                                        <a href="#" class="button" id='.$value.'>Comment</a>
+                					</div>
+                					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+                					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
 
-				</div>
-			</div>
+                				</div>
+                			</div>';
+            }
+            elseif ($nbface == 2)
+            {
+                echo'
+                			<div class="cube-container">
+                				<div class="photo-cube">
 
-			<div class="cube-container">
-				<div class="photo-cube">
+                					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+                					<div class="back photo-desc">
+                					  <h3>Earth from Space</h3>
+                					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                						<a href="#" class="button" id='.$value.'>Like</a>
+                                        <a href="#" class="button" id='.$value.'>Comment</a>
+                					</div>
+                					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+                					<img class="right" src="../img/cube/test.jpg" alt="">
 
-					<img class="front" src="img/Demo/7.png" alt="">
-					<div class="back photo-desc">
-					  <h3>The Milky Way</h3>
-					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        <a href="#" class="button">Like</a>
-                        <a href="#" class="button">Comment</a>
-					</div>
-					<img class="left" src="img/Demo/8.jpeg" alt="">
-					<img class="right" src="img/Demo/9.jpg" alt="">
 
-				</div>
-			</div>
+                			</div>
+                        </div>';
+            }
+            elseif ($nbface == 1)
+            {
+                echo'
+                			<div class="cube-container">
+                				<div class="photo-cube">
 
-            <div class="cube-container">
-				<div class="photo-cube">
+                					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+                					<div class="back photo-desc">
+                					  <h3>Earth from Space</h3>
+                					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                						<a href="#" class="button" id='.$value.'>Like</a>
+                                        <a href="#" class="button" id='.$value.'>Comment</a>
+                					</div>
+                					<img class="left" src="../img/cube/test.jpg" alt="">
+                					<img class="right" src="../img/cube/test.jpg" alt="">
 
-                    <img class="front" src="img/Demo/8.jpeg" alt="">
-					<div class="back photo-desc">
-					  <h3>The Milky Way</h3>
-					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                        <a href="#" class="button">Like</a>
-                        <a href="#" class="button">Comment</a>
-					</div>
-					<img class="left" src="img/Demo/7.png" alt="">
-					<img class="right" src="img/Demo/9.jpg" alt="">
 
-				</div>
-			</div>
+                			</div>
+                        </div>';
+            }
+            closedir($handle);
+        }
+    }
+}
 
-		</div>
-	</div>
+?>
+
+        </div>
+    </div>
 </div>
-
 <?php
 include 'footer.php';
 ?>
