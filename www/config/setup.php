@@ -45,6 +45,7 @@ include 'database.php';
 		`cube` VARCHAR(35) NOT NULL )
 		ENGINE = InnoDB";
 		echo "\e[36mLike table is created\e[0m\n";
+		$dbh->exec($sql);
 
 		#create default user
 		$avatar = base64_encode(file_get_contents("../img/icon/default_pp.png"));

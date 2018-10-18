@@ -48,6 +48,10 @@ include '../header.php';
           <label for="filtre4">
             <img src="/img/filtre/flower.png" alt="" title="">
           </label>
+          <input type="radio" name="filtres" id="filtre5" value="5" onclick="applyFiltre(this)" hidden>
+          <label for="filtre5">
+            <img src="/img/filtre/filtre_afeuerst.png" alt="" title="">
+          </label>
         </div>
         <textarea id="comment"></textarea>
         <button onClick="send()">Send</button>
@@ -61,7 +65,7 @@ include '../header.php';
   const f = ["0", "0", "0"];
   var w = 640;
   var h = 480;
-  const filtreMax = 4;
+  const filtreMax = 5;
 
 
   function selected(i, element) {

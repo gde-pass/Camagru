@@ -8,7 +8,7 @@
   $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 
-  if (!$_SESSION[logged]) {
+  if (!$_SESSION['logged']) {
     return http_response_code(401);
   }
 
@@ -16,7 +16,7 @@
 
   if ($_POST['nickname'] && $_POST['img']) {
     $sqlselect = $dbh->prepare("SELECT * FROM `like` WHERE `nicker`= ?");
-    $sqlselect->execute($_SESSION['nickname']);
+    $sqlselect->execute([$_SESSION['nickname']]);
     if ($sql) {
       return http_response_code(401);
     }

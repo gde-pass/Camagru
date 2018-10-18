@@ -8,7 +8,7 @@
 
   // GLOBALS
 
-  $filtre = array("empty.png", "star.png", "circular.png", "smoke.png", "flower.png");
+  $filtre = array("empty.png", "star.png", "circular.png", "smoke.png", "flower.png", "filtre_afeuerst.png");
   $nbFiltre = count($filtre);
   $imgs = explode('#', $_POST['req']);
   $arr = array();
