@@ -18,4 +18,16 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+    height: 50%;
+}
+
+#previous_comments {
+  height: 90%;
+  margin: 10px;
+}
+
+#comment_to_push {
+  position: relative;
+  width: 100%;
+  bottom: 5px;
 }

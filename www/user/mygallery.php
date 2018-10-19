@@ -71,7 +71,7 @@ $nblastsquarefaces = count($dir_contenu) % 3;
 <div id="myodal" class="modal" style="display: none;">
   <div class="modal-content">
     <div id="previous_comments"></div>
-    <input type="text" placeholder="comment">
+    <input type="text" placeholder="comment" id="comment_to_push">
   </div>
 </div>
 
