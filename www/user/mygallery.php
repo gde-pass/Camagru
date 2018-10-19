@@ -95,64 +95,41 @@ foreach ($dir_contenu as $key => $value)
                 $current_cube[] = $entry;
             }
         }
+        echo '
+          <div class="cube-container">
+          <div class="photo-cube">
+
+            <img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+            <div class="back photo-desc">
+              <h3>Earth from Space</h3>
+              <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
+              <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
+            </div>';
+
         if ($nbface == 3)
         {
             echo'
-            			<div class="cube-container">
-            				<div class="photo-cube">
-
-            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
-            					<div class="back photo-desc">
-            					  <h3>Earth from Space</h3>
-            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
-            					</div>
-            					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
-            					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
-
-            				</div>
-            			</div>';
+                <img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+      					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
+            		</div>
+            		</div>';
         }
         elseif ($nbface == 2)
         {
             echo'
-            			<div class="cube-container">
-            				<div class="photo-cube">
-
-            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
-            					<div class="back photo-desc">
-            					  <h3>Earth from Space</h3>
-            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
-            					</div>
-            					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
-            					<img class="right" src="../img/cube/test.jpg" alt="">
-
-
-            			</div>
-                    </div>';
+                <img class="left" src="'.$value."/".$current_cube[1].'" alt="">
+            		<img class="right" src="../img/cube/test.jpg" alt="">
+            		</div>
+                </div>';
         }
         elseif ($nbface == 1)
         {
             echo'
-            			<div class="cube-container">
-            				<div class="photo-cube">
-
-            					<img class="front"src="'.$value."/".$current_cube[0].'" alt="">
-            					<div class="back photo-desc">
-            					  <h3>Earth from Space</h3>
-            					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
-            					</div>
-            					<img class="left" src="../img/cube/test.jpg" alt="">
-            					<img class="right" src="../img/cube/test.jpg" alt="">
-
-
-            			</div>
-                    </div>';
+            		<img class="left" src="../img/cube/test.jpg" alt="">
+            		<img class="right" src="../img/cube/test.jpg" alt="">
+            		</div>
+                </div>';
         }
         closedir($handle);
     }
