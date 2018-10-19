@@ -68,6 +68,12 @@ $nblastsquarefaces = count($dir_contenu) % 3;
   </header>
 </section>
 
+<div id="myodal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div id="previous_comments"></div>
+    <input type="text" placeholder="comment">
+  </div>
+</div>
 
 <div class="container">
     <div class="container">
@@ -78,7 +84,7 @@ $nblastsquarefaces = count($dir_contenu) % 3;
         <div class="content clearfix">
 <?php
 
-include '../script/script_getlike.php';
+require '../script/script_getlike.php';
 
 foreach ($dir_contenu as $key => $value)
 {
@@ -104,7 +110,7 @@ foreach ($dir_contenu as $key => $value)
               <h3>Earth from Space</h3>
               <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
               <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
-              <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
+              <button name="comment" class="button" id='.$value.' onclick="display_modal(this)">Comment</button>
             </div>';
 
         if ($nbface == 3)

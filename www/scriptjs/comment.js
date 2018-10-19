@@ -18,5 +18,27 @@ function comment(element) {
 
 
 function comment_popup(element) {
-  
+
+}
+
+// Get the button that opens the modal
+var btn = document.getElementsByTagName("comment");
+
+let imgtocomment = null;
+
+// When the user clicks on the button, open the modal
+function display_modal(img) {
+  const modal = document.getElementById("myodal");
+  imgtocomment = img.id;
+  console.log(imgtocomment);
+  modal.style = "display: block";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  const modal = document.getElementById("myodal");
+  imgtocomment = null;
+    if (event.target == modal) {
+        modal.style = "display: none";
+    }
 }

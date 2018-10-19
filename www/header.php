@@ -16,6 +16,7 @@ session_start();
     <link href="/style/profile_header.css" rel="stylesheet" type="text/css">
     <link href="/style/general.css" rel="stylesheet" type="text/css">
     <link href="/style/camagru.css" rel="stylesheet" type="text/css">
+    <link href="/style/commentbox.css" rel="stylesheet" type="text/css">
     <script src="/scriptjs/like.js" type="text/javascript"></script>
     <script src="/scriptjs/comment.js" type="text/javascript"></script>
 </head>

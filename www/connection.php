@@ -1,5 +1,5 @@
 <?php
-include './config/database.php';
+include '/var/www/html/config/database.php';
 
 #Connection to DB camagru
 $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
