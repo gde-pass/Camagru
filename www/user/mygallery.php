@@ -78,11 +78,14 @@ $nblastsquarefaces = count($dir_contenu) % 3;
         <div class="content clearfix">
 <?php
 
+include '../script/script_getlike.php';
+
 foreach ($dir_contenu as $key => $value)
 {
     $current_cube = NULL;
     $nbface = basename($value);
     $nbface = substr($nbface, 1, 1);
+    $nblike = getlike($value);
     if ($handle = opendir($value))
     {
         while (false !== ($entry = readdir($handle)))
@@ -103,7 +106,7 @@ foreach ($dir_contenu as $key => $value)
             					  <h3>Earth from Space</h3>
             					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
             					</div>
             					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
             					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
@@ -122,7 +125,7 @@ foreach ($dir_contenu as $key => $value)
             					  <h3>Earth from Space</h3>
             					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
             					</div>
             					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
             					<img class="right" src="../img/cube/test.jpg" alt="">
@@ -142,7 +145,7 @@ foreach ($dir_contenu as $key => $value)
             					  <h3>Earth from Space</h3>
             					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
             						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                        <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                        <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
             					</div>
             					<img class="left" src="../img/cube/test.jpg" alt="">
             					<img class="right" src="../img/cube/test.jpg" alt="">

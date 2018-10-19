@@ -15,12 +15,16 @@
   //Envoyer en post le dossier a liker stocker en id
 
   if ($_POST['nickname'] && $_POST['img']) {
-    $sqlselect = $dbh->prepare("SELECT * FROM `like` WHERE `nicker`= ?");
-    $sqlselect->execute([$_SESSION['nickname']]);
-    if ($sql) {
-      return http_response_code(401);
+    $sqlselect = $dbh->prepare("SELECT * FROM `like` WHERE `nicker`= ? AND `cube` = ?");
+    $sqlselect->execute([$_SESSION['nickname'], $_POST['img']]);
+    $like_available = $sqlselect->fetch(PDO::FETCH_ASSOC);
+    if ($like_available != FALSE) {
+      $sqldelete = $dbh->prepare("DELETE FROM `like` WHERE `cube` = ? AND `nicker` = ?");
+      $sqldelete->execute([$_POST['img'], $_SESSION['nickname']]);
     }
-    $sql = $dbh->prepare("INSERT INTO `like` (`nickname`, `nicker`, `cube`) VALUES (?, ?, ?)");
-    $sql->execute([$_POST['nickname'], $_SESSION['nickname'], $_POST['img']]);
+    else {
+      $sql = $dbh->prepare("INSERT INTO `like` (`nickname`, `nicker`, `cube`) VALUES (?, ?, ?)");
+      $sql->execute([$_POST['nickname'], $_SESSION['nickname'], $_POST['img']]);
+    }
   }
 ?>

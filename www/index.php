@@ -60,7 +60,7 @@ foreach ($data_contenu as $key => $value)
                 					  <h3>Earth from Space</h3>
                 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                 						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                            <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                            <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
                 					</div>
                 					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
                 					<img class="right" src="'.$value."/".$current_cube[2].'" alt="">
@@ -78,7 +78,7 @@ foreach ($data_contenu as $key => $value)
                 					  <h3>Earth from Space</h3>
                 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                 						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                            <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                            <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
                 					</div>
                 					<img class="left" src="'.$value."/".$current_cube[1].'" alt="">
                 					<img class="right" src="../img/cube/test.jpg" alt="">
@@ -98,7 +98,7 @@ foreach ($data_contenu as $key => $value)
                 					  <h3>Earth from Space</h3>
                 					  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
                 						<a href="#" class="button" onclick="like(this)" id='.$value.'>Like</a>
-                            <a href="#" class="button" onclick="comment(this)" id='.$value.'>Comment</a>
+                            <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
                 					</div>
                 					<img class="left" src="../img/cube/test.jpg" alt="">
                 					<img class="right" src="../img/cube/test.jpg" alt="">
