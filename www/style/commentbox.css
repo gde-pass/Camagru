@@ -28,6 +28,14 @@
 
 #comment_to_push {
   position: relative;
-  width: 100%;
+  width: 90%;
   bottom: 5px;
+}
+
+#comment_button {
+  position:relative;
+  width: 9%;
+  bottom: 5px;
+  right: 0px;
+  height: 24px;
 }

@@ -71,7 +71,10 @@ $nblastsquarefaces = count($dir_contenu) % 3;
 <div id="myodal" class="modal" style="display: none;">
   <div class="modal-content">
     <div id="previous_comments"></div>
-    <?php if($_SESSION['logged']) {?><input type="text" placeholder="comment" id="comment_to_push"><?php }?>
+    <?php if($_SESSION['logged']) {?>
+      <input type="text" placeholder="comment" id="comment_to_push">
+      <button onclick="comment(document.getElementById('comment_to_push').value)" id="comment_button">send</button>
+    <?php }?>
   </div>
 </div>
 

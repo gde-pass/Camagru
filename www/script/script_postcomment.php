@@ -13,7 +13,7 @@
     return http_response_code(401);
   }
 
-  if ($_POST['comment'] && $_POST['img']) {
+  if ($_POST['comment'] && $_POST['img'] && $_POST['nickname']) {
     //search cube recursively
 
     //insert values for comment
