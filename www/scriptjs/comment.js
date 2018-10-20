@@ -25,12 +25,23 @@ function comment_popup(element) {
 var btn = document.getElementsByTagName("comment");
 
 let imgtocomment = null;
+let user = null;
 
 // When the user clicks on the button, open the modal
 function display_modal(img) {
   const modal = document.getElementById("myodal");
-  imgtocomment = img.id;
-  console.log(imgtocomment);
+  if (!img.id) {
+    alert('An error occured');
+    return ;
+  }
+  imgtocomment = img.id.split('/');
+  if (imgtocomment.length < 2)
+    return alert('An error occured');
+  cube = imgtocomment[imgtocomment.length - 1];
+  user = imgtocomment[imgtocomment.length - 2];
+  const xhr = new XMLHttpRequest();
+  xhr.open("GET", "/script/script_getcomment.php?cube=" + cube, false);
+  xhr.send(null);
   modal.style = "display: block";
 }
 

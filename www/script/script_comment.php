@@ -14,6 +14,13 @@
   }
 
   if ($_POST['comment'] && $_POST['img']) {
-    
+    //search cube recursively
+
+    //insert values for comment
+    $sql = $dbh->prepare("INSERT INTO `comment` (`id`, `cube`, `nickname`, `comment`) VALUES (NULL, ?, ?, ?)");
+    $sql->execute([$_POST['cube'], $_SESSION['nickname'], $_POST['comment']]);
+  }
+  else {
+    return http_response_code(400);
   }
 ?>

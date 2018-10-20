@@ -32,6 +32,7 @@ include 'database.php';
 
 		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`comment`
 		( `id` INT NOT NULL AUTO_INCREMENT ,
+		`cube` VARCHAR(35) NOT NULL,
 		`nickname` VARCHAR(30) NOT NULL ,
 		`comment` TEXT NULL DEFAULT NULL ,
 		PRIMARY KEY (`id`))
