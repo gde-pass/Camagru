@@ -53,6 +53,14 @@ foreach ($data_contenu as $key => $value)
         $nbface = basename($value);
         $nbface = substr($nbface, 1, 1);
         $nblike = getlike($value);
+        if(file_exists($value.'/comment'))
+        {
+            $description = file_get_contents($value.'/comment');
+        }
+        else {
+            $description = "No description.";
+        }
+
         if ($handle = opendir($value))
         {
             while (false !== ($entry = readdir($handle)))
@@ -69,7 +77,7 @@ foreach ($data_contenu as $key => $value)
               <img class="front"src="'.$value."/".$current_cube[0].'" alt="">
               <div class="back photo-desc">
                 <h3>Earth from Space</h3>
-                <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                <p>'.$description.'</p>
                 <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
                 <button name="comment" class="button" id='.$value.' onclick="display_modal(this)">Comment</button>
               </div>';

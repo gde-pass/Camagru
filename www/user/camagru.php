@@ -53,7 +53,7 @@ include '../header.php';
             <img src="/img/filtre/filtre_afeuerst.png" alt="" title="">
           </label>
         </div>
-        <textarea id="comment"></textarea>
+        <textarea maxlength="80" id="comment"></textarea>
         <button onClick="send()">Send</button>
   <script>
 

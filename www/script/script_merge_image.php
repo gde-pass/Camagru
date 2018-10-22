@@ -42,7 +42,13 @@
     imagedestroy($src);
     imagedestroy($dst);
   }
-  if ($_POST['comment']) {
+  if ($_POST['comment'] && strlen($_POST['comment']) <= 80)
+  {
     file_put_contents($pathfolder . '/comment', $_POST['comment']);
+  }
+  else {
+      echo "comment too long";
+      return http_response_code(400);
+      exit();
   }
 ?>
