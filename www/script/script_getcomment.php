@@ -14,10 +14,10 @@ if ($_GET['cube'] &&  $_GET['user']) {
    }
    foreach($msgs as $key=>$value) {
     if ($key % 2 == 1) {
-      echo "<div style='background-color: lightgray'>";
+      echo "<div style='background-color: lightgray; border-radius: 5px'>";
     }
     else
-      echo "<div>";
+      echo "<div style='border-radius: 5px'>";
     echo "<div class='msg_div' style='border-style: inline;'>" .  $value[3] . "</div>";
     echo "<div class='user_div' style='font: 10px arial, sans-serif; font-style: italic;'>@" .  $value[2] . '</div>';
     echo "</div>";
