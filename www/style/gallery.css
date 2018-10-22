@@ -97,6 +97,14 @@ p {
 	background: rgba(74,137,202, .8);
 	margin: auto;
 }
+
+.delete {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	right: 3px;
+	top: 2px;
+}
 /* ---- Photo Overlay ---- */
 
 .photo-desc {
