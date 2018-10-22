@@ -112,7 +112,7 @@ foreach ($dir_contenu as $key => $value)
                 <a href="../script/script_delete_cube.php?id='.$value.'"><img border="0" src="../img/msgbox/error-icon.png" class="delete"></a>
               <h3>Earth from Space</h3>
               <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-              <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
+              <button class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</button>
               <button name="comment" class="button" id='.$value.' onclick="display_modal(this)">Comment</button>
             </div>';
 
