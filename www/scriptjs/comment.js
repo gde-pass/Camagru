@@ -1,8 +1,9 @@
 // Get the button that opens the modal
 var btn = document.getElementsByTagName("comment");
 
-let imgtocomment = null;
+var imgtocomment = null;
 let user = null;
+let cube = null;
 
 // When the user clicks on the button, open the modal
 function display_modal(img) {
@@ -20,9 +21,9 @@ function display_modal(img) {
   xhr.open("GET", "/script/script_getcomment.php?cube=" + cube + "&user=" + user, false);
   xhr.send(null);
   if (xhr.status === 200) {
-
+    document.getElementById('previous_comments').innerHTML = xhr.responseText;
   }
-  else if (xhr.status === 400){
+  else if (xhr.status === 401){
     document.getElementById('previous_comments').innerHTML = "<h id='no_comments'>No comment has been posted</h>";
   }
   modal.style = "display: block";
@@ -39,15 +40,15 @@ window.onclick = function(event) {
 
 
 function comment(element) {
-  console.log(element);
+  console.log();
   if (imgtocomment === null) {
     const modal = document.getElementById("myodal");
     modal.style = "display: none";
   }
   const xhr = new XMLHttpRequest();
-  xhr.open("POST", '/script/script_like.php', false);
+  xhr.open("POST", '/script/script_postcomment.php', false);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  xhr.send("img=" + req[2] + "");
+  xhr.send("comment=" + element + "&img="  + cube + "&nickname=" + user);
   if (xhr.status === 200) {
     console.log('OK - ' + xhr.responseText.toString());
   }

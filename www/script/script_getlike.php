@@ -8,6 +8,5 @@ function getlike($path) {
   $sql = $dbh->prepare("SELECT count(*) FROM `like` WHERE `cube` = ?");
   $sql->execute([$img]);
   return $sql->fetchColumn();
-  return 0;
 }
 ?>

@@ -15,10 +15,11 @@
 
   if ($_POST['comment'] && $_POST['img'] && $_POST['nickname']) {
     //search cube recursively
-
+    if (!is_dir("../data/" . $_POST['nickname'] . "/" . $_POST['img']))
+      return http_response_code(400);
     //insert values for comment
-    $sql = $dbh->prepare("INSERT INTO `comment` (`id`, `cube`, `nickname`, `comment`) VALUES (NULL, ?, ?, ?)");
-    $sql->execute([$_POST['cube'], $_SESSION['nickname'], $_POST['comment']]);
+    $sql = $dbh->prepare("INSERT INTO `comment` (`id`, `cube`, `nickname`, `comment`, `commentater`) VALUES (NULL, ?, ?, ?, ?)");
+    $sql->execute([$_POST['img'], $_POST['nickname'], $_POST['comment'], $_SESSION['nickname']]);
   }
   else {
     return http_response_code(400);

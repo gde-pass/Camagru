@@ -11,6 +11,16 @@ if (isset($_GET['subscribe']) AND !empty($_GET['subscribe']))
 }
 ?>
 
+<div id="myodal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <div id="previous_comments"></div>
+    <?php if($_SESSION['logged']) {?>
+      <input type="text" placeholder="comment" id="comment_to_push">
+      <button onclick="comment(document.getElementById('comment_to_push').value)" id="comment_button">send</button>
+    <?php }?>
+  </div>
+</div>
+
 <div class="container">
     <div class="container">
 		<header class="main-header clearfix">
@@ -53,16 +63,16 @@ foreach ($data_contenu as $key => $value)
                 }
             }
             echo '
-              <div class="cube-container">
-              <div class="photo-cube">
+            <div class="cube-container">
+            <div class="photo-cube">
 
-                <img class="front"src="'.$value."/".$current_cube[0].'" alt="">
-                <div class="back photo-desc">
-                  <h3>Earth from Space</h3>
-                  <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                  <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
-                  <a href="#" class="button" onclick="comment_popup(this)" id='.$value.'>Comment</a>
-                </div>';
+              <img class="front"src="'.$value."/".$current_cube[0].'" alt="">
+              <div class="back photo-desc">
+                <h3>Earth from Space</h3>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                <a href="#" class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
+                <button name="comment" class="button" id='.$value.' onclick="display_modal(this)">Comment</button>
+              </div>';
 
             if ($nbface == 3)
             {

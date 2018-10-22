@@ -35,6 +35,7 @@ include 'database.php';
 		`cube` VARCHAR(35) NOT NULL,
 		`nickname` VARCHAR(30) NOT NULL ,
 		`comment` TEXT NULL DEFAULT NULL ,
+		`commentater` VARCHAR(30) NOT NULL ,
 		PRIMARY KEY (`id`))
 		ENGINE = InnoDB";
 		$dbh->exec($sql);
