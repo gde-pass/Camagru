@@ -9,6 +9,10 @@ if (isset($_GET['nickname']) AND !empty($_GET['nickname']))
 {
     echo '<div class="error" style="margin-bottom: 55px;">This nickname is not available.</div>';
 }
+if (isset($_GET['captcha']) AND !empty($_GET['captcha']))
+{
+    echo '<div class="error" style="margin-bottom: 55px;">Captcha verification failed</div>';
+}
 if ($_SESSION['logged'] == TRUE)
 {
     echo "
@@ -74,7 +78,9 @@ $loginURL = $gClient->createAuthUrl();
                         <span>I agree to the <a href="/termsandconditions.php">terms and conditions</a></span>
                     </label>
                 </div>
-
+                <div class="form-row">
+                    <div class="g-recaptcha" style="margin-left: 57px; overflow: hidden;" data-sitekey="6Ld7PHYUAAAAABi1kG8UrilWPIekV3yGK7tE_euE"></div>
+                </div>
                 <div class="form-row">
                     <button type="submit">Register</button>
                 </div>
@@ -92,7 +98,6 @@ $loginURL = $gClient->createAuthUrl();
             </div>
 
             <a href="<?= $loginURL ?>" class="form-google-button">Google</a>
-            <a href="#" class="form-facebook-button">Facebook</a>
             <a href="../twitter/index.php" class="form-twitter-button">Twitter</a>
 
         </div>

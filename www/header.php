@@ -19,6 +19,7 @@ session_start();
     <link href="/style/commentbox.css" rel="stylesheet" type="text/css">
     <script src="/scriptjs/like.js" type="text/javascript"></script>
     <script src="/scriptjs/comment.js" type="text/javascript"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>

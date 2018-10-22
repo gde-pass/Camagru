@@ -45,6 +45,20 @@ if (isset($_POST["firstname"], $_POST["lastname"], $_POST["nickname"], $_POST["e
     $nickname = $_POST["nickname"];
     $email = $_POST["email"];
     $password = $_POST["password"];
+    $captcha_SecretKey = "6Ld7PHYUAAAAAEoqhu4yaBK9fqF_mBttkvaRkdKL";
+    $captcha_ResponseKey = $_POST['g-recaptcha-response'];
+    $userIP = $_SERVER['REMOTE_ADDR'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$captcha_SecretKey&response=$captcha_ResponseKey&remoteip=$userIP";
+    $response = file_get_contents($url);
+    $response = json_decode($response);
+    if ($response->success == FALSE)
+    {
+        echo "
+            <script language='JavaScript' type='text/javascript'>
+                window.location.replace('../form/form_subscription.php?captcha=no');
+            </script>";
+            exit();
+    }
     # generating random key
     $key = md5(microtime(TRUE)*100000);
 
