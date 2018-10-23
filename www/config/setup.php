@@ -6,6 +6,8 @@ include 'database.php';
 		$dbh = new PDO("mysql:host=$DB_HOST", $DB_USER, $DB_PW);
 		#set the PDO error mode to exception
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$sql = "DROP DATABASE IF EXISTS $DB_NAME";
+		$dbh->exec($sql);
 		#Create DB
 		$sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
 		$dbh->exec($sql);
