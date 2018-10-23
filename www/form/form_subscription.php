@@ -91,7 +91,7 @@ $loginURL = $gClient->createAuthUrl();
 
         </div>
 
-        <div class="form-sign-in-with-social">
+        <div class="form-sign-in-with-social" style="margin-top: 330px;">
 
             <div class="form-row form-title-row">
                 <span class="form-title">Sign in with</span>

@@ -1,10 +1,5 @@
 <?php
 session_start();
-if ($_SESSION['logged'] == FALSE || $_SESSION['twitter'] == "TRUE")
-{
-  header('Location: ../form/form_login.php?logged=no');
-  exit(0);
-}
 include '../header.php';
 include '../config/database.php';
 
@@ -24,14 +19,20 @@ switch ($_GET['msg'])
    case 'empty':
         echo '<div class="error" style="margin-bottom: 55px;">You sent nothing !</div>';
         break;
-   case 'invalid_name':
-     echo '<div class="error" style="margin-bottom: 55px;">Invalid name !</div>';
+   case 'invalid_first_name':
+     echo '<div class="error" style="margin-bottom: 55px;">Invalid first name !</div>';
+     break;
+   case 'invalid_last_name':
+     echo '<div class="error" style="margin-bottom: 55px;">Invalid last name !</div>';
      break;
    case 'invalid_password':
      echo '<div class="error" style="margin-bottom: 55px;">Invalid password !</div>';
      break;
-   case 'name_change':
-     echo '<div class="success" style="margin-bottom: 55px;">Name successfully changed !</div>';
+   case 'invalid_email':
+     echo '<div class="error" style="margin-bottom: 55px;">Invalid email !</div>';
+     break;
+   case 'changed':
+     echo '<div class="success" style="margin-bottom: 55px;">setting successfully changed !</div>';
      break;
 }
 ?>
@@ -44,6 +45,7 @@ switch ($_GET['msg'])
 
                   <div class='form-title-row'>
                       <h1>EDIT YOUR PROFILE</h1>
+                      <p style="margin-top: 8px;">Please only fill fields you want to update</p>
                   </div>
 
                   <div class="form-row" style="text-align: center;">
@@ -55,42 +57,57 @@ switch ($_GET['msg'])
                           <input type="submit" name="Change" id="change" hidden>
                         </form>
                   </div>
-<form class="form-register" action="/script/script_change_name.php" method="POST">
-                  <div class="form-row">
+
+                <form class="form-login" action="../script/update_user_info.php" method="post">
+
+                  <div class="form-row" style="margin-top: 35px">
                       <label>
                           <span>First Name</span>
-                          <input type="text" name="firstname"  pattern="^[À-ÿa-zA-Z' -]+$" title="You must have more of 2 characters and no special characters" minlength="2" maxlength="255" placeholder="<?= $_SESSION['firstname'] ?>">
+                          <input type="text" name="firstname" pattern="^[À-ÿa-zA-Z' -]+$" title="You must have more than 2 characters and no special characters" minlength="2" maxlength="255" placeholder="<?= $_SESSION['firstname'] ?>">
                       </label>
                   </div>
 
                   <div class="form-row">
                       <label>
                           <span>Last Name</span>
-                          <input type="text" name="lastname"  pattern="^[À-ÿa-zA-Z' -]+$" title="You must have more of 2 characters and no special characters" minlength="2" maxlength="255" placeholder="<?= $_SESSION['lastname'] ?>">
+                          <input type="text" name="lastname" pattern="^[À-ÿa-zA-Z' -]+$" title="You must have more than 2 characters and no special characters" minlength="2" maxlength="255" placeholder="<?= $_SESSION['lastname'] ?>">
                       </label>
                   </div>
-                  <input type="submit" hidden>
-</form>
-<form class="form-forgotten-password" action="/script/script_change_password_logged.php" method="POST">
+
+                  <div class="form-row">
+                      <label>
+                          <span>Email</span>
+                          <input type="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" minlength="3" maxlength="254" placeholder="<?= $_SESSION['email'] ?>">
+                      </label>
+                  </div>
+
                   <div class='form-row'>
                       <label>
-                          <span>Password</span>
-                          <input type='password' name='password'  minlength='6' title="You must have more of 6 characters and no special characters" maxlength='20' pattern='((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})' placeholder="*******">
+                          <span>New Password</span>
+                          <input type='password' name='new_password'  minlength='6' title="You must have more than 6 characters, a capital and tiny letter" maxlength='20' pattern='((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})' placeholder="*******">
                       </label>
                   </div>
-</form>
+
+                  <div class="form-row" style="text-align: center">
+                      <button type="submit">Save settings</button>
+                  </div>
+
+                  </form>
+
+                  <form action="/script/script_delaccount.php" method="post">
+                      <button type="submit" name="button" class="button" style="background-color:red">DELETE YOUR ACCOUNT</button>
+                  </form>
               </div>
-
           </div>
+    </div>
 
-<form action="/script/script_delaccount.php" method="post">
-      <button type="submit" name="button" class="button" style="background-color:red">DELETE YOUR ACCOUNT</button>
-</form>
 <script>
-  function changeImg(image) {
+  function changeImg(image)
+  {
     document.form.submit();
   }
 </script>
+
 <?php
 include '../footer.php';
 ?>
