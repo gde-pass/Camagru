@@ -54,7 +54,7 @@ include '../header.php';
           </label>
         </div>
         <textarea maxlength="80" id="comment"></textarea>
-        <button onClick="send()">Send</button>
+        <button class="button" onClick="send()">Send</button>
   <script>
 
   var nb = 0;
@@ -86,7 +86,7 @@ include '../header.php';
     let i = 0;
     let res = "";
     if (nb === 0 || nb > 3){
-      alert("An error Occured");
+      alert("Please take picture before send");
       return ;
     }
     while(i < nb) {
@@ -106,7 +106,7 @@ include '../header.php';
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send('req=' + res + comment);
     if (xhr.status === 200) {
-      console.log('OK - ' + xhr.responseText.toString());
+      window.location.href = "/";
     }
     else {
       console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText + '->' + xhr.responseText.toString());
