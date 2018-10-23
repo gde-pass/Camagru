@@ -66,6 +66,19 @@ function    update_user_password(string $password)
     }
 }
 
+function    update_user_email(string $email)
+{
+    if (preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email))
+    {
+        
+    }
+    else
+    {
+        $msg = "invalid_email";
+        header("Location: ../form/form_settings.php?msg=$msg");
+    }
+}
+
 if (!empty($_POST['firstname']))
 {
     $firstname = $_POST['firstname'];
