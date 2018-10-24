@@ -1,5 +1,4 @@
 <?php
-include '../header.php';
 include '../config/database.php';
 
 if(isset($_GET['nickname']) && !empty($_GET['nickname']) AND isset($_GET['key']) && !empty($_GET['key']))
@@ -10,6 +9,7 @@ if(isset($_GET['nickname']) && !empty($_GET['nickname']) AND isset($_GET['key'])
 else
 {
     echo '<div class="error">Invalid approach, please use the link that has been send to your email.</div>';
+    exit();
 }
 
 #Connection to DB camagru
@@ -52,5 +52,4 @@ else
 {
     echo '<div class="error">Invalid approach, please use the link that has been send to your email.</div>';
 }
-include '../footer.php';
 ?>

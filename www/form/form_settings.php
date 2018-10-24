@@ -6,34 +6,45 @@ include '../config/database.php';
 
 switch ($_GET['msg'])
 {
-   case 'uploaded':
+    case 'uploaded':
         echo '<div class="success" style="margin-bottom: 55px;">Picture successfully uploaded</div>';
         break;
 
-   case 'invalid_extension':
+    case 'invalid_extension':
         echo '<div class="error" style="margin-bottom: 55px;">You tried to upload a invalid extension, please use png, jpeg, jpg or gif</div>';
         break;
-   case 'to_heavy':
+
+    case 'to_heavy':
         echo '<div class="error" style="margin-bottom: 55px;">Your picture is to heavy, please upload a picture under 100Ko</div>';
         break;
-   case 'empty':
+
+    case 'empty':
         echo '<div class="error" style="margin-bottom: 55px;">You sent nothing !</div>';
         break;
-   case 'invalid_first_name':
-     echo '<div class="error" style="margin-bottom: 55px;">Invalid first name !</div>';
-     break;
-   case 'invalid_last_name':
-     echo '<div class="error" style="margin-bottom: 55px;">Invalid last name !</div>';
-     break;
-   case 'invalid_password':
-     echo '<div class="error" style="margin-bottom: 55px;">Invalid password !</div>';
-     break;
-   case 'invalid_email':
-     echo '<div class="error" style="margin-bottom: 55px;">Invalid email !</div>';
-     break;
-   case 'changed':
-     echo '<div class="success" style="margin-bottom: 55px;">setting successfully changed !</div>';
-     break;
+
+    case 'invalid_first_name':
+        echo '<div class="error" style="margin-bottom: 55px;">Invalid first name !</div>';
+        break;
+
+    case 'invalid_last_name':
+        echo '<div class="error" style="margin-bottom: 55px;">Invalid last name !</div>';
+        break;
+
+    case 'invalid_password':
+        echo '<div class="error" style="margin-bottom: 55px;">Invalid password !</div>';
+        break;
+
+    case 'invalid_email':
+        echo '<div class="error" style="margin-bottom: 55px;">Invalid email !</div>';
+        break;
+
+    case 'changed':
+        echo '<div class="success" style="margin-bottom: 55px;">Settings successfully changed !</div>';
+        break;
+
+    case 'email_not_available':
+        echo '<div class="warning" style="margin-bottom: 55px;">The email you choose is already taken!</div>';
+        break;
 }
 ?>
 
