@@ -3,6 +3,22 @@ session_start();
 include '../header.php';
 include '../config/database.php';
 
+function    get_user_preference($nickname)
+{
+    include '../config/database.php';
+    #Connection to DB camagru
+    $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
+    #set the PDO error mode to exception
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = $dbh->prepare("SELECT `notif` FROM `users` WHERE `nickname` = ?");
+    $sql->execute([$nickname]);
+    $sql = $sql->fetch(PDO::FETCH_ASSOC);
+
+    return ($sql['notif']);
+}
+
+$test = get_user_preference($_SESSION['nickname']);
+echo $test;
 
 switch ($_GET['msg'])
 {
@@ -96,6 +112,13 @@ switch ($_GET['msg'])
                       <label>
                           <span>New Password</span>
                           <input type='password' name='new_password'  minlength='6' title="You must have more than 6 characters, a capital and tiny letter" maxlength='20' pattern='((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})' placeholder="*******">
+                      </label>
+                  </div>
+
+                  <div class='form-row'>
+                      <label>
+                          <span>Notifications</span>
+                          <input style="margin-left: 80px; width: 14px;" type='checkbox' <?php if (get_user_preference($_SESSION['nickname']) == 1){ echo "checked";} ?> name='notif'>
                       </label>
                   </div>
 
