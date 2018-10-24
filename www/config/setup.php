@@ -7,11 +7,12 @@ include 'database.php';
 		#set the PDO error mode to exception
 		$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$sql = "DROP DATABASE IF EXISTS $DB_NAME";
+		echo "\e[36mDatabase Camagru deleted\e[0m\n";
 		$dbh->exec($sql);
 		#Create DB
 		$sql = "CREATE DATABASE IF NOT EXISTS $DB_NAME";
 		$dbh->exec($sql);
-		echo "\e[36mDatabase Camagru is created\e[0m\n";
+		echo "\e[36mDatabase Camagru created\e[0m\n";
 		#Create User Table
 		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`users`
 		( `id` SMALLINT(6) UNSIGNED NOT NULL AUTO_INCREMENT ,
@@ -30,7 +31,7 @@ include 'database.php';
 		UNIQUE `UNICKNAME` (`nickname`))
 		ENGINE = InnoDB COMMENT = 'Informations about camagru users'";
 		$dbh->exec($sql);
-		echo "\e[36mUsers table is created\e[0m\n";
+		echo "\e[36mUsers table created\e[0m\n";
 
 		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`comment`
 		( `id` INT NOT NULL AUTO_INCREMENT ,
@@ -41,14 +42,14 @@ include 'database.php';
 		PRIMARY KEY (`id`))
 		ENGINE = InnoDB";
 		$dbh->exec($sql);
-		echo "\e[36mComment table is created\e[0m\n";
+		echo "\e[36mComment table created\e[0m\n";
 
 		$sql = "CREATE TABLE IF NOT EXISTS `camagru`.`like`
 		( `nickname` VARCHAR(30) NOT NULL ,
 		`nicker` VARCHAR(30) NOT NULL ,
 		`cube` VARCHAR(35) NOT NULL )
 		ENGINE = InnoDB";
-		echo "\e[36mLike table is created\e[0m\n";
+		echo "\e[36mLike table created\e[0m\n";
 		$dbh->exec($sql);
 
 		#create default user
