@@ -22,6 +22,7 @@ include 'database.php';
 		`firstname` VARCHAR(255) NOT NULL ,
 		`lastname` VARCHAR(255) NOT NULL ,
 		`confirm` BOOLEAN NOT NULL DEFAULT FALSE ,
+		`notif` BOOLEAN NOT NULL DEFAULT TRUE ,
 		`key` VARCHAR(32) NOT NULL ,
 		`reset_token` VARCHAR(32) NULL ,
 		`date_token` DATETIME NULL ,
