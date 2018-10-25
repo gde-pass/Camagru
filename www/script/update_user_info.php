@@ -124,6 +124,29 @@ function    update_user_email(string $email)
     }
 }
 
+function    update_user_notif(int $notif)
+{
+    include '../config/database.php';
+    # Get the $nickname
+    $nickname = $_SESSION['nickname'];
+    $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
+    # Set the PDO error mode to exception
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    if ($notif == 1)
+    {
+        $sql = $dbh->prepare("UPDATE `users`
+                SET `notif` = ?
+                WHERE `users`.`nickname` = ?");
+    }
+    if ($notif == 0)
+    {
+        $sql = $dbh->prepare("UPDATE `users`
+                SET `notif` = ?
+                WHERE `users`.`nickname` = ?");
+    }
+    $sql->execute([$notif, $nickname]);
+}
+
 if (!empty($_POST['firstname']))
 {
     $firstname = $_POST['firstname'];
@@ -146,6 +169,17 @@ if (!empty($_POST['email']))
 {
     $email = $_POST['email'];
     update_user_email($email);
+}
+
+if (!isset($_POST['notif']))
+{
+    $notif = 0;
+    update_user_notif($notif);
+}
+else
+{
+    $notif = 1;
+    update_user_notif($notif);
 }
 
 $msg = "changed";
