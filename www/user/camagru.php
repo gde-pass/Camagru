@@ -106,7 +106,7 @@ include '../header.php';
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send('req=' + res + comment);
     if (xhr.status === 200) {
-      window.location.href = "/";
+      window.location.href = "/?msg=camagru_success";
     }
     else {
       console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText + '->' + xhr.responseText.toString());

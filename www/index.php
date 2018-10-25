@@ -9,6 +9,12 @@ if (isset($_GET['subscribe']) AND !empty($_GET['subscribe']))
 {
     echo '<div class="warning" style="margin-bottom: 55px;">Please log out before.</div>';
 }
+if ($_GET['msg'] == 'camagru_success') {
+  echo '<div class="success" style="margin-bottom: 55px;">Picture successfully uploaded</div>';
+}
+else if ($_GET['msg'] == 'like'){
+  echo '<div class="success" style="margin-bottom: 55px;">Picture like</div>';
+}
 ?>
 
 <div id="myodal" class="modal" style="display: none;">

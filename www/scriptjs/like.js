@@ -12,7 +12,7 @@ function like(element) {
   xhr.send("nickname=" + req[req.length - 2] + "&img=" + req[req.length - 1]);
   if (xhr.status === 200) {
     console.log('OK - ' + xhr.responseText.toString());
-    location.reload();
+    window.location.href = "/?msg=like";
   }
   else {
     console.log('Error - ' + xhr.status + ' -> ' + xhr.statusText + '->' + xhr.responseText.toString());
