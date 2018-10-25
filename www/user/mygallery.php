@@ -91,10 +91,18 @@ require '../script/script_getlike.php';
 
 foreach ($dir_contenu as $key => $value)
 {
+
     $current_cube = NULL;
     $nbface = basename($value);
     $nbface = substr($nbface, 1, 1);
     $nblike = getlike($value);
+    if(file_exists($value.'/comment'))
+    {
+        $description = file_get_contents($value.'/comment');
+    }
+    else {
+        $description = "No description.";
+    }
     if ($handle = opendir($value))
     {
         while (false !== ($entry = readdir($handle)))
@@ -110,8 +118,8 @@ foreach ($dir_contenu as $key => $value)
             <img class="front"src="'.$value."/".$current_cube[0].'" alt="">
             <div class="back photo-desc">
                 <a href="../script/script_delete_cube.php?id='.$value.'"><img border="0" src="../img/msgbox/error-icon.png" class="delete"></a>
-              <h3>Earth from Space</h3>
-              <p>Aenean lacinia bibendum nulla sed consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+              <h3>@'.$_SESSION["nickname"].'</h3>
+              <p>'. $description.'</p>
               <a class="button" onclick="like(this)" id='.$value.'>Like - '.$nblike.'</a>
               <a name="comment" class="button" id='.$value.' onclick="display_modal(this)">Comment</a>
             </div>';

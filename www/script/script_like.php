@@ -18,7 +18,7 @@
     $sqlselect = $dbh->prepare("SELECT * FROM `like` WHERE `nicker`= ? AND `cube` = ?");
     $sqlselect->execute([$_SESSION['nickname'], $_POST['img']]);
     $like_available = $sqlselect->fetch(PDO::FETCH_ASSOC);
-    $sqlemail = $dbh->prepare("SELECT `email` FROM `users` WHERE `nickname`= ?");
+    $sqlemail = $dbh->prepare("SELECT `email`, `notif` FROM `users` WHERE `nickname`= ?");
     $sqlemail->execute([$_POST['nickname']]);
     $all = $sqlemail->fetchAll();
     $to = $all[0]['email'];
@@ -32,15 +32,15 @@
       $sqldelete->execute([$_POST['img'], $_SESSION['nickname']]);
       $subject = "CAMAGRU - New Disike";
       $content = "User '" . $_SESSION['nickname'] . "' dislike your cube " . $_POST['img'];
-      mail($to, $subject, $content, $headers);
     }
     else {
       $sql = $dbh->prepare("INSERT INTO `like` (`nickname`, `nicker`, `cube`) VALUES (?, ?, ?)");
       $sql->execute([$_POST['nickname'], $_SESSION['nickname'], $_POST['img']]);
       $subject = "CAMAGRU - New Like";
       $content = "User '" . $_SESSION['nickname'] . "' like your cube " . $_POST['img'];
-      mail($to, $subject, $content, $headers);
     }
+    if ($all[0]['notif'] == 1)
+      mail($to, $subject, $content, $headers);
   }
   else {
     return http_response_code(400);
