@@ -66,11 +66,56 @@ function    update_user_password(string $password)
     }
 }
 
+function    check_email_availability(string $email)
+{
+    include '../config/database.php';
+    #Connection to DB camagru
+    $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
+    #set the PDO error mode to exception
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    #prepare the request
+    $sql = $dbh->prepare("SELECT * FROM `users` WHERE `users`.`email` = ?");
+    #run the sql request
+    $sql->execute([$email]);
+    $email_availability = $sql->fetch(PDO::FETCH_ASSOC);
+
+    if ($email_availability !== FALSE)
+    {
+        return (TRUE);
+    }
+    else
+    {
+        return (FALSE);
+    }
+}
+
 function    update_user_email(string $email)
 {
     if (preg_match("/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/", $email))
     {
-        
+        include '../config/database.php';
+        if (check_email_availability($email) == TRUE)
+        {
+            $msg = "email_not_available";
+            header("Location: ../form/form_settings.php?msg=$msg");
+        }
+        else
+        {   # Get the $nickname
+            $nickname = $_SESSION['nickname'];
+            # Get the key of the user
+            # Connection to DB camagru
+            $dbh = new PDO("mysql:host=$DB_HOST;dbname=$DB_NAME", $DB_USER, $DB_PW);
+            # Set the PDO error mode to exception
+            $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            # Prepare the sql query to find the user
+            $sql = $dbh->prepare("UPDATE `users`
+                    SET `email` = ?
+                    WHERE `users`.`nickname` = ?");
+            #run the sql request
+            $sql->execute([$email, $nickname]);
+            $_SESSION['email'] = $email;
+        }
+
     }
     else
     {
@@ -103,8 +148,7 @@ if (!empty($_POST['email']))
     update_user_email($email);
 }
 
-echo "<PRE>";
-print_r($_POST);
-
+$msg = "changed";
+header("Location: ../form/form_settings.php?msg=$msg");
 
 ?>
