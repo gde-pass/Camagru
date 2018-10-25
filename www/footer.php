@@ -17,7 +17,7 @@
             <a href="#">Contact</a>
         </p>
 
-        <p class="footer-company-name">gde-pass &copy; 2018</p>
+        <p class="footer-company-name">jeblonde &copy; 2018</p>
     </div>
 
     <div class="footer-center">
@@ -29,12 +29,12 @@
 
         <div>
             <i class="fa fa-phone"></i>
-            <p>+33 06 37 18 43 00</p>
+            <p>+33 06 95 44 88 32</p>
         </div>
 
         <div>
             <i class="fa fa-envelope"></i>
-            <p><a href="mailto:gde-pass@student.42.fr">gde-pass@student.42.fr</a></p>
+            <p><a href="mailto:jeblonde@student.42.fr">jeblonde@student.42.fr</a></p>
         </div>
 
     </div>
@@ -50,9 +50,8 @@
         <div class="footer-icons">
 
             <a href="https://www.facebook.com/42born2code/"><img src="/img/logo/facebook.png" alt="facebook-logo"></a>
-            <a href="https://www.instagram.com/greg2pass/"><img src="/img/logo/instagram.png" alt="instagram-logo"></a>
-            <a href="https://www.linkedin.com/in/gregory-de-pass/"><img src="/img/logo/linkedin.png" alt="linkedin-logo"></a>
-            <a href="https://github.com/gde-pass"><img src="/img/logo/github.png" alt="github-logo"></a>
+            <a href="https://www.linkedin.com/in/"><img src="/img/logo/linkedin.png" alt="linkedin-logo"></a>
+            <a href="https://github.com/jeblonde"><img src="/img/logo/github.png" alt="github-logo"></a>
 
         </div>
 

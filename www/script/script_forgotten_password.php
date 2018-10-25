@@ -45,10 +45,10 @@ if (isset($_POST['email']) AND !empty($_POST['email']) AND server_pattern_check(
         # Setting up mail
         $to      = $email;
         $subject = 'Reset Password';
-        $message = "A request to reset your password for your account has been made from the following IP adress: $ip\r\nTo reset your password please click on this link or copy and paste this URL into your browser (link expires in 24 hours):\r\nhttp://192.168.99.100/form/form_password_change.php?token=".urlencode($reset_token)."&email=".urlencode($email)."\r\n\nThis is an automatically generated email, please do not reply to it.\r\nIf you have any queries regarding your order please email gde-pass@student.42.fr";
+        $message = "A request to reset your password for your account has been made from the following IP adress: $ip\r\nTo reset your password please click on this link or copy and paste this URL into your browser (link expires in 24 hours):\r\nhttp://192.168.99.100/form/form_password_change.php?token=".urlencode($reset_token)."&email=".urlencode($email)."\r\n\nThis is an automatically generated email, please do not reply to it.\r\nIf you have any queries regarding your order please email project.camagru.42@student.42.fr";
         $headers = array(
             'From' => 'project.camagru.42@gmail.com',
-            'Reply-To' => 'gde-pass@student.42.fr',
+            'Reply-To' => 'project.camagru.42@student.42.fr',
             'X-Mailer' => 'PHP/' . phpversion()
         );
         #send the mail

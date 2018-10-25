@@ -17,6 +17,9 @@ function display_modal(img) {
     return alert('An error occured');
   cube = imgtocomment[imgtocomment.length - 1];
   user = imgtocomment[imgtocomment.length - 2];
+  if (user === 'data')
+    document.getElementById('previous_comments').innerHTML = "<h id='no_comments'>Gmail and Twitter users can't be comments</h>";
+  else {
   const xhr = new XMLHttpRequest();
   xhr.open("GET", "/script/script_getcomment.php?cube=" + cube + "&user=" + user, false);
   xhr.send(null);
@@ -26,6 +29,7 @@ function display_modal(img) {
   else if (xhr.status === 401){
     document.getElementById('previous_comments').innerHTML = "<h id='no_comments'>No comment has been posted</h>";
   }
+}
   modal.style = "display: block";
 }
 
@@ -40,7 +44,7 @@ window.onclick = function(event) {
 
 
 function comment(element) {
-  console.log();
+  console.log(user);
   if (imgtocomment === null) {
     const modal = document.getElementById("myodal");
     modal.style = "display: none";
