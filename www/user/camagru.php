@@ -86,7 +86,7 @@ include '../header.php';
     let i = 0;
     let res = "";
     if (nb === 0 || nb > 3){
-      alert("Please take picture before send");
+      //alert("Please take picture before send");
       return ;
     }
     while(i < nb) {
