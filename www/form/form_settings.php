@@ -61,7 +61,7 @@ switch ($_GET['msg'])
 }
 ?>
 
-  <div class='main-content' style="text-align: -webkit-center;">
+  <div class='main-content' style="text-align: center;">
 
           <div class='form-forgotten-password-with-email'>
 
