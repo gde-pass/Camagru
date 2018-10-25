@@ -17,9 +17,6 @@ function    get_user_preference($nickname)
     return ($sql['notif']);
 }
 
-$test = get_user_preference($_SESSION['nickname']);
-echo $test;
-
 switch ($_GET['msg'])
 {
     case 'uploaded':
