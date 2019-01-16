@@ -36,7 +36,7 @@ This installation process is for macOS X
     eval $(docker-machine env Camagru)   
     ```
 
-6. Execute the [docker-compose](https://docs.docker.com/compose/) file in the Docker folder
+6. Execute the [docker-compose](https://docs.docker.com/compose/) file in the docker-lamp folder
     
     ```bash
     docker-compose up 
