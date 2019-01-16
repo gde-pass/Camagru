@@ -41,3 +41,9 @@ This installation process is for macOS X
     ```bash
     docker-compose up 
     ```
+    
+ 7. Here we go ! You can now visit [Camagru](http://192.168.99.100:80) !
+
+## Difficulty
+
+This project is evaluated as a **T1**.
