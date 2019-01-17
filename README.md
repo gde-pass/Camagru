@@ -1,8 +1,6 @@
 # Camagru
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8319bfd1e46a4e84aefb3e9b6466055c)](https://app.codacy.com/app/gde-pass/Camagru?utm_source=github.com&utm_medium=referral&utm_content=gde-pass/Camagru&utm_campaign=Badge_Grade_Dashboard)
-
-![https://img.shields.io/badge/Grade-115%2F100-green.svg](https://img.shields.io/badge/Grade-115%2F100-green.svg)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8319bfd1e46a4e84aefb3e9b6466055c)](https://app.codacy.com/app/gde-pass/Camagru?utm_source=github.com&utm_medium=referral&utm_content=gde-pass/Camagru&utm_campaign=Badge_Grade_Dashboard) ![https://img.shields.io/badge/Grade-115%2F100-green.svg](https://img.shields.io/badge/Grade-115%2F100-green.svg)
 
 ## Installation 
 
